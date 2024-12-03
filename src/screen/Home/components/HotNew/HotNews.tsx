@@ -122,9 +122,6 @@ export function Announcement() {
               className={`w-2 h-2 rounded-full transition-colors ${
                 index === current ? "bg-[#2980b9]" : "bg-gray-300"
               }`}
-              // style={{
-              //   background: `${index === current ? "#2980b9" : "gray"}`,
-              // }}
               onClick={() => api?.scrollTo(index)}
             />
           ))}

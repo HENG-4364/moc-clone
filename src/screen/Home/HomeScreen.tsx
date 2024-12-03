@@ -1,6 +1,7 @@
 import React from "react";
 import { MessageFromMinister } from "./components/MessageFromMinister/MessageFromMinister";
 import { Announcement } from "./components/HotNew/HotNews";
+import Automation from "./components/Automation/Automation";
 
 const HomeScreen = () => {
   return (
@@ -12,6 +13,7 @@ const HomeScreen = () => {
         image={"/ministry-of-commerece.jpg"}
       />
       <Announcement />
+      <Automation />
     </div>
   );
 };
