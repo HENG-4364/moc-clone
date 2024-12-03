@@ -124,7 +124,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="#"
-                    className="text-sm text-muted-foreground hover:text-primary"
+                    className=""
                   >
                     សេវានាំចេញទំនិញ
                   </Link>
@@ -132,7 +132,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="#"
-                    className="text-sm text-muted-foreground hover:text-primary"
+                    className=""
                   >
                     អគ្គាធិការដ្ឋាន
                   </Link>

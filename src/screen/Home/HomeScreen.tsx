@@ -2,6 +2,7 @@ import React from "react";
 import { MessageFromMinister } from "./components/MessageFromMinister/MessageFromMinister";
 import { Announcement } from "./components/HotNew/HotNews";
 import Automation from "./components/Automation/Automation";
+import KeyEconomicIndicators from "./components/KeyEconomicIndicators/KeyEconomicIndicators";
 
 const HomeScreen = () => {
   return (
@@ -14,6 +15,7 @@ const HomeScreen = () => {
       />
       <Announcement />
       <Automation />
+      <KeyEconomicIndicators />
     </div>
   );
 };
