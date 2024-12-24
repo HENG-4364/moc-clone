@@ -22,17 +22,17 @@ export function MessageFromMinister({
 
   return (
     <div
-      className="w-full py-[60px]"
+      className="w-full py-[20px] md:py-[50px] lg:py-[60px]"
       style={{
-        backgroundImage: `url(${bgImage})`,
+        background: `url(${bgImage}) no-repeat`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       <div className="container">
         <div className="w-full mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="relative  rounded-lg overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="relative rounded-lg overflow-hidden">
               <Image
                 width={1000}
                 height={1000}
@@ -40,7 +40,7 @@ export function MessageFromMinister({
                 alt=""
                 style={{
                   width: "100%",
-                  height: "100%",
+                  height: "auto",
                   borderRadius: "10px",
                 }}
               />
@@ -49,10 +49,9 @@ export function MessageFromMinister({
               <div className={` `}>
                 <div className="mb-6">
                   <div
-                    className=" mb-5 text-4xl"
+                    className=" mb-5 text-[23px] lg:text-[28px] xl:text-[36px] leading-[1.8]"
                     style={{
                       fontFamily: "Moul, serif",
-                      lineHeight: "4rem",
                     }}
                   >
                     {title}
@@ -63,9 +62,7 @@ export function MessageFromMinister({
                   </div>
                 </div>
               </div>
-              <div className="leading-10 text-lg font-bold">
-                {subtitle}
-              </div>
+              <div className="leading-[2] text-lg font-semibold">{subtitle}</div>
               {/* Uncomment and adjust as needed for the button
               <Link
                 href={`/${currentLang}/page/messages-from-minister`}

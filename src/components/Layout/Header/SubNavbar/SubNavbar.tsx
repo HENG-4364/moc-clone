@@ -31,6 +31,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useEffect, useState } from "react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -71,28 +72,49 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export function SubNavbar() {
-  const [position, setPosition] = React.useState("bottom");
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 80) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div
-      className="py-[10px]"
+      className={`sticky top-0 z-50 transition-colors duration-300 ease-in-out ${
+        isScrolled ? "bg-[#2980B9]" : "bg-white"
+      }`}
       style={{ boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }}
     >
-      <div className="container mx-auto">
-        <div className="flex justify-between items-center">
+      <div className="container mx-auto ">
+        <div className="hidden xl:flex justify-between items-center py-[10px]">
           <div>
             <NavigationMenu>
-              <NavigationMenuList>
+              <NavigationMenuList className="">
                 <NavigationMenuItem>
                   <Link href="/" legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
+                      className={`${
+                        isScrolled ? "text-white" : ""
+                      } ${navigationMenuTriggerStyle()}`}
                     >
                       ទំព័រដើម
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>អំពីក្រសួង</NavigationMenuTrigger>
+                  <NavigationMenuTrigger
+                    className={`${isScrolled ? "text-white" : ""}`}
+                  >
+                    អំពីក្រសួង
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                       <li className="row-span-3">
@@ -129,7 +151,9 @@ export function SubNavbar() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>
+                  <NavigationMenuTrigger
+                    className={`${isScrolled ? "text-white" : ""}`}
+                  >
                     សេវាកម្មពាណិជ្ជកម្ម
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -147,7 +171,9 @@ export function SubNavbar() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>
+                  <NavigationMenuTrigger
+                    className={`${isScrolled ? "text-white" : ""}`}
+                  >
                     ព័ត៌មានពាណិជ្ជកម្ម
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -167,7 +193,9 @@ export function SubNavbar() {
                 <NavigationMenuItem>
                   <Link href="/docs" legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
+                      className={`${
+                        isScrolled ? "text-white" : ""
+                      } ${navigationMenuTriggerStyle()}`}
                     >
                       ព័ត៌មាន
                     </NavigationMenuLink>
@@ -176,7 +204,9 @@ export function SubNavbar() {
                 <NavigationMenuItem>
                   <Link href="/docs" legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
+                      className={`${
+                        isScrolled ? "text-white" : ""
+                      } ${navigationMenuTriggerStyle()}`}
                     >
                       សំណួរចម្លើយ
                     </NavigationMenuLink>
@@ -185,7 +215,11 @@ export function SubNavbar() {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-          <div className="flex items-center gap-3 cursor-pointer">
+          <div
+            className={`flex items-center gap-3 cursor-pointer ${
+              isScrolled ? "text-white" : ""
+            }`}
+          >
             <div>
               <Search size={20} />
             </div>
@@ -201,8 +235,7 @@ export function SubNavbar() {
                 y1="0.5"
                 x2="0.499999"
                 y2="11.5"
-                // stroke={`${isScrolled ? "#FFFFFF" : "#333333"}`}
-                stroke={"#333333"}
+                stroke={`${isScrolled ? "#FFFFFF" : "#333333"}`}
                 strokeLinecap="round"
               ></line>
             </svg>
@@ -234,8 +267,7 @@ export function SubNavbar() {
                 y1="0.5"
                 x2="0.499999"
                 y2="11.5"
-                // stroke={`${isScrolled ? "#FFFFFF" : "#333333"}`}
-                stroke={"#333333"}
+                stroke={`${isScrolled ? "#FFFFFF" : "#333333"}`}
                 strokeLinecap="round"
               ></line>
             </svg>

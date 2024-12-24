@@ -32,7 +32,7 @@ const Navbar = () => {
                 />
               </Link>
             </div>
-            <div className="hidden sm:block">
+            <div className="hidden xl:block">
               <Link href={`#`}>
                 <Image
                   src="/kh-flag-title.png"
@@ -45,7 +45,7 @@ const Navbar = () => {
                 />
               </Link>
             </div>
-            <div className="sm:hidden flex items-start gap-3 cursor-pointer">
+            <div className="xl:hidden flex items-start gap-3 cursor-pointer">
               <div>
                 <Image
                   width={500}
