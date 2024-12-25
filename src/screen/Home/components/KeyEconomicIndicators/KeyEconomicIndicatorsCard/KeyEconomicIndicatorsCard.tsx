@@ -3,21 +3,23 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
-type AutomationListCardProps = {
-  icon?: string;
+type KeyEconomicIndicatorsCardProps = {
+  date?: string;
   title?: string;
   link?: string;
-  color?: string;
   image: string;
+  name?: string;
 };
 
 export default function KeyEconomicIndicatorsCard({
   image,
   link,
   title,
-  color,
-}: AutomationListCardProps) {
+  date,
+  name,
+}: KeyEconomicIndicatorsCardProps) {
   const router = useRouter();
 
   const handleClick = () => {
@@ -28,40 +30,31 @@ export default function KeyEconomicIndicatorsCard({
 
   return (
     <Card
-      className="cursor-pointer transition-colors duration-300 hover:bg-gray-100"
+      className="cursor-pointer transition-colors duration-300 hover:bg-gray-50 shadow-md border-gray-100/95 "
       onClick={handleClick}
     >
-      <CardContent className="p-6 flex flex-col items-center">
-        <a
-          href={link}
+      <CardContent className="p-5">
+        <Link
           target="_blank"
           rel="noreferrer"
-          className="w-full h-full flex flex-col items-center"
           onClick={(e) => e.stopPropagation()}
+          href={`${link}`}
         >
-          {/* <div
-            className={`flex flex-col items-center justify-center h-[170px] w-full ${color}`}
-          >
-            <Image
-              src={image}
-              width={80}
-              height={80}
-              alt={title || "Automation icon"}
-              className="mb-4"
-            />
-            <h3
-              className="text-lg font-semibold text-center line-clamp-1 overflow-hidden leading-[30px]"
-              title={title}
-            >
-              {title}
-            </h3>
-          </div> */}
           <div>
-            <div className="">តម្លៃប្រេងសាំង</div>
-            <div></div>
-            <div></div>
+            <div className="text-[16px] mb-2">{title}</div>
+            <div className="flex justify-between mb-3">
+              <div className="text-[25px] flex items-center font-medium">
+                {name}
+              </div>
+              <div className="flex justify-end items-center">
+                <Image src={image} width={70} height={70} alt={title || ""} />
+              </div>
+            </div>
+            <div>
+              <div className="text-[14px]">កាលបរិច្ឆេទ​ : {date}</div>
+            </div>
           </div>
-        </a>
+        </Link>
       </CardContent>
     </Card>
   );

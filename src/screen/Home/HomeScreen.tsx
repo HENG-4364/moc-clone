@@ -3,7 +3,7 @@ import { MessageFromMinister } from "./components/MessageFromMinister/MessageFro
 import { Announcement } from "./components/HotNew/HotNews";
 import Automation from "./components/Automation/Automation";
 import KeyEconomicIndicators from "./components/KeyEconomicIndicators/KeyEconomicIndicators";
-
+import KeyActivities from "./components/KeyActivities/KeyActivities";
 const HomeScreen = () => {
   return (
     <div>
@@ -16,6 +16,7 @@ const HomeScreen = () => {
       <Announcement />
       <Automation />
       <KeyEconomicIndicators />
+      <KeyActivities />
     </div>
   );
 };

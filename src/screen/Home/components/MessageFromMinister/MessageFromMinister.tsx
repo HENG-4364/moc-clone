@@ -62,7 +62,7 @@ export function MessageFromMinister({
                   </div>
                 </div>
               </div>
-              <div className="leading-[2] text-lg font-semibold">{subtitle}</div>
+              <div className="leading-[2] text-[16px] lg:text-[18px] font-semibold">{subtitle}</div>
               {/* Uncomment and adjust as needed for the button
               <Link
                 href={`/${currentLang}/page/messages-from-minister`}
