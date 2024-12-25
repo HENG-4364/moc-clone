@@ -12,11 +12,16 @@ import {
   FileText,
   FileCheck,
   FileClock,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { DocumentSearch } from "./components/DocumentSearch/DocumentSearch";
 import { DocumentFilters } from "./components/DocumentFilter/DocumentFilter";
 import { FeaturedDocuments } from "./components/DocumentFeature/DocumentFeature";
 import { Title } from "@/components/Title/Title";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { useEffect, useRef, useState } from "react";
 
 const documentTypes = [
   {
@@ -24,16 +29,40 @@ const documentTypes = [
     label: "ទាំងអស់",
   },
   {
-    id: "announcement",
-    label: "សេចក្តីជូនដំណឹង",
-  },
-  {
     id: "decree",
     label: "អនុក្រឹត្យ",
   },
   {
-    id: "guidelines",
-    label: "គោលការណ៍ណែនាំ",
+    id: "announcement",
+    label: "ប្រកាស",
+  },
+  {
+    id: "business-law",
+    label: "ច្បាប់ពាក់ព័ន្ធវិស័យពាណិជ្ជកម្ម",
+  },
+  {
+    id: "agreement",
+    label: "កិច្ចព្រមព្រៀងពាណិជ្ជកម្ម",
+  },
+  {
+    id: "budget-management-of-the-ministry-of-commerce",
+    label: "ការគ្រប់គ្រងថវិការបស់ក្រសួងពាណិជ្ជកម្ម",
+  },
+  {
+    id: "notice",
+    label: "សេចក្តីជូនដំណឹង",
+  },
+  {
+    id: "policy",
+    label: "គោលនយោបាយ",
+  },
+  {
+    id: "clv-dta",
+    label: "ឯកសារពាក់ព័ន្ធនឹងតំបន់ CLV DTA",
+  },
+  {
+    id: "wto-file",
+    label: "ឯកសារពាក់ព័ន្ធ WTO",
   },
 ];
 
@@ -109,16 +138,70 @@ const stats = [
   },
 ];
 
+const categories = [
+  "ទាំងអស់",
+  "អនុក្រឹត្យ",
+  "ប្រកាស",
+  "ឯកសារក្នុងផ្នែកដឹកជញ្ជូន",
+  "កិច្ចព្រមព្រៀងពាណិជ្ជកម្ម",
+  "គោលការណ៍ណែនាំ",
+  "សេចក្តីជូនដំណឹង",
+  "សេចក្តីណែនាំ",
+  "គោលនយោបាយ",
+  "បទបញ្ជា",
+];
+
 export function OfficialDocumentScreen() {
+  const [activeCategory, setActiveCategory] = useState("ទាំងអស់");
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+
+  const updateArrows = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
+      setShowLeftArrow(scrollLeft > 0);
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1);
+    }
+  };
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 200;
+      const newScrollLeft =
+        scrollContainerRef.current.scrollLeft +
+        (direction === "left" ? -scrollAmount : scrollAmount);
+
+      scrollContainerRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+
+    if (scrollContainer) {
+      scrollContainer.addEventListener("scroll", updateArrows);
+      updateArrows();
+
+      return () => scrollContainer.removeEventListener("scroll", updateArrows);
+    }
+  }, []);
+
   return (
     <>
-      <div className="container mx-auto px-4 py-12">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <Title title={"ឯកសារផ្លូវការ"} />
+      <div className="bg-[#ffffffef]">
+        <div className="container mx-auto px-4 py-12">
+          {/* Header */}
+          <div className="text-center mb-3">
+            <Title title={"ឯកសារផ្លូវការ"} />
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
+            {/* Stats */}
+            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
             {stats.map((stat) => {
               const Icon = stat.icon;
               return (
@@ -137,63 +220,134 @@ export function OfficialDocumentScreen() {
                 </Card>
               );
             })}
+          </div> */}
+
+            {/* Search */}
+            <DocumentSearch />
           </div>
 
-          {/* Search */}
-          <DocumentSearch />
-        </div>
+          {/* Featured Documents */}
+          {/* <div className="mb-12">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-semibold">ឯកសារថ្មីៗ</h2>
+              <DocumentFilters />
+            </div>
+            <FeaturedDocuments />
+          </div> */}
+          <div className="relative">
+            {/* Left Arrow */}
+            {/* {showLeftArrow && (
+            <button
+              onClick={() => scroll("left")}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-full rounded-l-lg bg-gray-200"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+          )} */}
 
-        {/* Featured Documents */}
-        <div className="mb-12">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-semibold">ឯកសារថ្មីៗ</h2>
-            <DocumentFilters />
-          </div>
-          <FeaturedDocuments />
-        </div>
-
-        {/* Document Categories */}
-        <Tabs defaultValue="all" className="w-full">
-          <TabsList className="mb-8">
-            {documentTypes.map((type) => (
-              <TabsTrigger key={type.id} value={type.id}>
-                {type.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          <TabsContent
-            value="all"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {documents.map((doc) => {
-              const Icon = doc.icon;
-              return (
-                <Card
-                  key={doc.id}
-                  className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-none shadow-md"
+            {/* Scrollable Area */}
+            <div
+              ref={scrollContainerRef}
+              className="flex overflow-x-auto whitespace-nowrap  p-2 space-x-4 scrollbar-hide rounded-md"
+              style={{}}
+            >
+              {documentTypes.map((type) => (
+                <button
+                  key={type.id}
+                  className={`rounded-md ${
+                    activeCategory === type.label
+                      ? "bg-[#2980B9] text-white"
+                      : "bg-gray-200"
+                  } px-4 py-2`}
+                  onClick={() => setActiveCategory(type.label)}
                 >
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div
-                        className={`w-12 h-12 rounded-xl ${doc.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        <Icon className="w-6 h-6" />
+                  {type.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Right Arrow */}
+            {/* {showRightArrow && (
+            <button
+              onClick={() => scroll("right")}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-full rounded-r-lg bg-gray-200"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          )} */}
+          </div>
+
+          <div className="flex justify-end gap-2 mt-2 mb-5">
+            <button
+              className={`p-2 rounded-full shadow-md ${
+                !showLeftArrow
+                  ? "bg-gray-50 hover:bg-gray-50"
+                  : "bg-gray-100 hover:bg-gray-200"
+              }`}
+              onClick={() => scroll("left")}
+            >
+              <ChevronLeft
+                className={` ${!showLeftArrow ? "text-gray-400" : ""}`}
+              />
+            </button>
+            <button
+              className={`p-2 rounded-full shadow-md ${
+                !showRightArrow
+                  ? "bg-gray-50 hover:bg-gray-50"
+                  : "bg-gray-100 hover:bg-gray-200"
+              }`}
+              onClick={() => scroll("right")}
+            >
+              <ChevronRight
+                className={` ${!showRightArrow ? "text-gray-400" : ""}`}
+              />
+            </button>
+          </div>
+          {/* Document Categories */}
+          <Tabs defaultValue="all" className="w-full">
+            <TabsList className="mb-8 hidden">
+              {documentTypes.map((type) => (
+                <TabsTrigger key={type.id} value={type.id}>
+                  {type.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            <TabsContent
+              value="all"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {documents.map((doc) => {
+                const Icon = doc.icon;
+                return (
+                  <Card
+                    key={doc.id}
+                    className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-none shadow-md"
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex justify-between items-start mb-4">
+                        <div
+                          className={`w-12 h-12 rounded-xl ${doc.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                        >
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <span className="text-sm text-muted-foreground">
+                          {doc.count} ឯកសារ
+                        </span>
                       </div>
-                      <span className="text-sm text-muted-foreground">
-                        {doc.count} ឯកសារ
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2">{doc.title}</h3>
-                    <p className="text-muted-foreground text-sm">
-                      {doc.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </TabsContent>
-        </Tabs>
+                      <h3 className="text-xl font-semibold mb-2">
+                        {doc.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        {doc.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </>
   );

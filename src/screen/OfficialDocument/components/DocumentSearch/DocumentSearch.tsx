@@ -8,7 +8,7 @@ export function DocumentSearch() {
     <div className="relative">
       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
       <Input 
-        className="pl-10 w-full max-w-xl" 
+        className="pl-10 w-full max-w-xl py-5" 
         placeholder="ស្វែងរកឯកសារ..." 
       />
     </div>
