@@ -59,10 +59,6 @@ export default function KeyActivitiesSwiper() {
           pagination={{
             clickable: true,
           }}
-          // autoplay={{
-          //   delay: 5000,
-          //   disableOnInteraction: false,
-          // }}
           breakpoints={{
             1200: { slidesPerView: 3 },
             992: { slidesPerView: 3 },
@@ -76,7 +72,7 @@ export default function KeyActivitiesSwiper() {
           style={{ paddingBottom: "50px" }}
         >
           {slides.map((slide) => (
-            <SwiperSlide>
+            <SwiperSlide  key={slide.id}>
               <KeyActivitiesCard
                 title={slide?.title}
                 image={slide?.image}

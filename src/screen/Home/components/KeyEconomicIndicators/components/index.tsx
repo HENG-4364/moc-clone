@@ -15,6 +15,7 @@ import KeyEconomicIndicatorsCard from "../KeyEconomicIndicatorsCard/KeyEconomicI
 
 const slides = [
   {
+    id: 1,
     title: "តម្លៃប្រេងសាំង",
     link: "https://www.businessregistration.moc.gov.kh",
     date: "១១/ធ្នូ/២០២៤",
@@ -22,6 +23,7 @@ const slides = [
     name: "តម្លៃ",
   },
   {
+    id: 2,
     title: "សន្ទស្សន៍តម្លៃអ្នកប្រើប្រាស់",
     link: "https://ecommercelicensing.moc.gov.kh",
     date: "១១/ធ្នូ/២០២៤",
@@ -29,6 +31,7 @@ const slides = [
     name: "0.46%",
   },
   {
+    id: 3,
     title: "ទំនិញនាំចេញ-នាំចូល",
     link: "https://cambodiaip.gov.kh",
     date: "១១/ធ្នូ/២០២៤",
@@ -36,6 +39,7 @@ const slides = [
     name: "នាំចូល",
   },
   {
+    id: 4,
     title: "ទំនិញសក្ដានុពល",
     link: "http://www.setfo.gov.kh",
     date: "១១/ធ្នូ/២០២៤",
@@ -79,7 +83,7 @@ export default function KeyEconomicIndicatorsSwiper() {
           style={{ paddingBottom: "50px" }}
         >
           {slides.map((slide) => (
-            <SwiperSlide>
+            <SwiperSlide key={slide.id}>
               <KeyEconomicIndicatorsCard
                 title={slide?.title}
                 image={slide?.image}

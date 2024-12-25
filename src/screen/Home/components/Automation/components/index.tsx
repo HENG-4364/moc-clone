@@ -16,6 +16,7 @@ import AutomationCard from "../AutomationCard/AutomationCard.";
 
 const slides = [
   {
+    id: 1,
     title: "Business Registration",
     link: "https://www.businessregistration.moc.gov.kh",
     icon: "flaticon-seo",
@@ -23,6 +24,7 @@ const slides = [
     image: "/bs2.webp",
   },
   {
+    id: 2,
     title: "Business license",
     link: "https://ecommercelicensing.moc.gov.kh",
     icon: "flaticon-laptop",
@@ -30,6 +32,7 @@ const slides = [
     image: "/bs3.webp",
   },
   {
+    id: 3,
     title: "Intellectual Property",
     link: "https://cambodiaip.gov.kh",
     icon: "flaticon-analysis-1",
@@ -37,6 +40,7 @@ const slides = [
     image: "/bs1.webp",
   },
   {
+    id: 4,
     title: "Secured Transactions Filing Office",
     link: "http://www.setfo.gov.kh",
     icon: "flaticon-seo",
@@ -44,6 +48,7 @@ const slides = [
     image: "/bs4.webp",
   },
   {
+    id: 5,
     title: "CO Automation",
     link: "https://co.moc.gov.kh",
     icon: "flaticon-analysis-1",
@@ -87,7 +92,7 @@ export default function AutomationSwiper() {
           style={{ paddingBottom: "50px" }}
         >
           {slides.map((slide) => (
-            <SwiperSlide>
+            <SwiperSlide key={slide.id}>
               <AutomationCard
                 image={slide?.image}
                 color={slide?.color}
