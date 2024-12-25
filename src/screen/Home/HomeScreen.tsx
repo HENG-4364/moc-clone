@@ -4,6 +4,7 @@ import { Announcement } from "./components/HotNew/HotNews";
 import Automation from "./components/Automation/Automation";
 import KeyEconomicIndicators from "./components/KeyEconomicIndicators/KeyEconomicIndicators";
 import KeyActivities from "./components/KeyActivities/KeyActivities";
+import OfficialDocuments from "./components/OfficialDocument/OfficialDocument";
 const HomeScreen = () => {
   return (
     <div>
@@ -17,6 +18,7 @@ const HomeScreen = () => {
       <Automation />
       <KeyEconomicIndicators />
       <KeyActivities />
+      <OfficialDocuments />
     </div>
   );
 };
