@@ -22,6 +22,17 @@ import { Title } from "@/components/Title/Title";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { OfficialDocumentPagination } from "./components/Pagionation/Pagination";
+import { PdfCard } from "./components/DocumentCard/DocumentCard";
 
 const documentTypes = [
   {
@@ -66,57 +77,89 @@ const documentTypes = [
   },
 ];
 
+// const documents = [
+//   {
+//     id: 1,
+//     icon: Search,
+//     title: "សេចក្តីជូនដំណឹង",
+//     description: "ស្វែងរកឯកសារផ្លូវការ និងសេចក្តីជូនដំណឹងផ្សេងៗ",
+//     color: "bg-blue-500/10 text-blue-500",
+//     count: 25,
+//   },
+//   {
+//     id: 2,
+//     icon: Image,
+//     title: "ប្រកាស",
+//     description: "ប្រកាសព័ត៌មាន និងការផ្សព្វផ្សាយផ្សេងៗ",
+//     color: "bg-purple-500/10 text-purple-500",
+//     count: 18,
+//   },
+//   {
+//     id: 3,
+//     icon: Ship,
+//     title: "ឯកសារក្នុងផ្នែកដឹកជញ្ជូន",
+//     description: "ឯកសារពាក់ព័ន្ធនឹងការដឹកជញ្ជូន និងឡូជីស្ទីក",
+//     color: "bg-green-500/10 text-green-500",
+//     count: 32,
+//   },
+//   {
+//     id: 4,
+//     icon: ScrollText,
+//     title: "អនុក្រឹត្យ",
+//     description: "អនុក្រឹត្យ និងឯកសារផ្លូវការផ្សេងៗ",
+//     color: "bg-red-500/10 text-red-500",
+//     count: 15,
+//   },
+//   {
+//     id: 5,
+//     icon: Scale,
+//     title: "កិច្ចព្រមព្រៀងពាណិជ្ជកម្ម",
+//     description: "កិច្ចព្រមព្រៀង និងឯកសារពាណិជ្ជកម្មផ្សេងៗ",
+//     color: "bg-amber-500/10 text-amber-500",
+//     count: 28,
+//   },
+//   {
+//     id: 6,
+//     icon: ClipboardCheck,
+//     title: "គោលការណ៍ណែនាំ",
+//     description: "គោលការណ៍ណែនាំ និងបទបញ្ជាផ្សេងៗ",
+//     color: "bg-teal-500/10 text-teal-500",
+//     count: 22,
+//   },
+// ];
 const documents = [
   {
-    id: 1,
-    icon: Search,
-    title: "សេចក្តីជូនដំណឹង",
-    description: "ស្វែងរកឯកសារផ្លូវការ និងសេចក្តីជូនដំណឹងផ្សេងៗ",
-    color: "bg-blue-500/10 text-blue-500",
-    count: 25,
+    title: "Cambodia and WTO-Year 2004-KH-Eng",
+    date: "០១-កក្កដា-២០២៤",
+    time: "២៣:០០:០០ PM",
+    fileSize: "1.2MB",
   },
   {
-    id: 2,
-    icon: Image,
-    title: "ប្រកាស",
-    description: "ប្រកាសព័ត៌មាន និងការផ្សព្វផ្សាយផ្សេងៗ",
-    color: "bg-purple-500/10 text-purple-500",
-    count: 18,
+    title: "CAMBODIA'S 20-YEAR JOURNEY AS A WTO MEMBER-KH-ENG_FINAL",
+    date: "០១-កក្កដា-២០២៤",
+    time: "០១:០០:០០ PM",
+    fileSize: "3.5MB",
   },
   {
-    id: 3,
-    icon: Ship,
-    title: "ឯកសារក្នុងផ្នែកដឹកជញ្ជូន",
-    description: "ឯកសារពាក់ព័ន្ធនឹងការដឹកជញ្ជូន និងឡូជីស្ទីក",
-    color: "bg-green-500/10 text-green-500",
-    count: 32,
+    title: "អនុក្រឹត្យលេខ ២៩៨ អនក្រ.បក ចុះថ្ងៃទី ១៣ ខែ កក្កដា ឆ្នាំ២០២៤",
+    date: "០២-កក្កដា-២០២៤",
+    time: "០២:០០:២០ PM",
+    fileSize: "2.8MB",
   },
   {
-    id: 4,
-    icon: ScrollText,
-    title: "អនុក្រឹត្យ",
-    description: "អនុក្រឹត្យ និងឯកសារផ្លូវការផ្សេងៗ",
-    color: "bg-red-500/10 text-red-500",
-    count: 15,
+    title: "សារាចរណែនាំស្តីពីការអនុវត្ត សេចក្តីសម្រេច ហត្ថ នៃយន្តការ CLV-DTA",
+    date: "០២-កក្កដា-២០២៤",
+    time: "០១:៣៣:២០ AM",
+    fileSize: "1.8MB",
   },
   {
-    id: 5,
-    icon: Scale,
-    title: "កិច្ចព្រមព្រៀងពាណិជ្ជកម្ម",
-    description: "កិច្ចព្រមព្រៀង និងឯកសារពាណិជ្ជកម្មផ្សេងៗ",
-    color: "bg-amber-500/10 text-amber-500",
-    count: 28,
-  },
-  {
-    id: 6,
-    icon: ClipboardCheck,
-    title: "គោលការណ៍ណែនាំ",
-    description: "គោលការណ៍ណែនាំ និងបទបញ្ជាផ្សេងៗ",
-    color: "bg-teal-500/10 text-teal-500",
-    count: 22,
+    title:
+      "ប្រកាសអន្តរក្រសួងទីផ្សារមូលបត្រ សេដ្ឋកិច្ចនិងហិរញ្ញវត្ថុ ហត្ថ នៃយន្តការ",
+    date: "០២-កក្កដា-២០២៤",
+    time: "០១:៣៣:២០ AM",
+    fileSize: "4.2MB",
   },
 ];
-
 const stats = [
   {
     icon: FileText,
@@ -152,7 +195,7 @@ const categories = [
 ];
 
 export function OfficialDocumentScreen() {
-  const [activeCategory, setActiveCategory] = useState("ទាំងអស់");
+  const [activeCategory, setActiveCategory] = useState("all");
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -194,7 +237,7 @@ export function OfficialDocumentScreen() {
 
   return (
     <>
-      <div className="bg-[#ffffffef]">
+      <div className="bg-[#f6f7f8]">
         <div className="container mx-auto px-4 py-12">
           {/* Header */}
           <div className="text-center mb-3">
@@ -255,11 +298,11 @@ export function OfficialDocumentScreen() {
                 <button
                   key={type.id}
                   className={`rounded-md ${
-                    activeCategory === type.label
-                      ? "bg-[#2980B9] text-white"
+                    activeCategory === type.id
+                      ? "bg-gradient-to-b from-[#2980B9] to-[#24648f] text-white"
                       : "bg-gray-200"
-                  } px-4 py-2`}
-                  onClick={() => setActiveCategory(type.label)}
+                  } px-2 py-2 text-sm`}
+                  onClick={() => setActiveCategory(type.id)}
                 >
                   {type.label}
                 </button>
@@ -304,7 +347,7 @@ export function OfficialDocumentScreen() {
             </button>
           </div>
           {/* Document Categories */}
-          <Tabs defaultValue="all" className="w-full">
+          {/* <Tabs defaultValue="all" className="w-full">
             <TabsList className="mb-8 hidden">
               {documentTypes.map((type) => (
                 <TabsTrigger key={type.id} value={type.id}>
@@ -346,7 +389,54 @@ export function OfficialDocumentScreen() {
                 );
               })}
             </TabsContent>
-          </Tabs>
+          </Tabs> */}
+          {activeCategory === "all" && (
+            // <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            //   {documents.map((doc) => {
+            //     const Icon = doc.icon;
+            //     return (
+            //       <Card
+            //         key={doc.id}
+            //         className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-none shadow-md"
+            //       >
+            //         <CardContent className="p-6">
+            //           <div className="flex justify-between items-start mb-4">
+            //             <div
+            //               className={`w-12 h-12 rounded-xl ${doc.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+            //             >
+            //               <Icon className="w-6 h-6" />
+            //             </div>
+            //             <span className="text-sm text-muted-foreground">
+            //               {doc.count} ឯកសារ
+            //             </span>
+            //           </div>
+            //           <h3 className="text-xl font-semibold mb-2">
+            //             {doc.title}
+            //           </h3>
+            //           <p className="text-muted-foreground text-sm">
+            //             {doc.description}
+            //           </p>
+            //         </CardContent>
+            //       </Card>
+            //     );
+            //   })}
+            // </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {documents.map((doc, index) => (
+                <PdfCard key={index} {...doc} />
+              ))}
+            </div>
+          )}
+          <div className="flex justify-end ">
+            <div className="w-full mt-5">
+              <OfficialDocumentPagination
+                currentPage={2}
+                total={80}
+                size={10}
+                limit={9}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>

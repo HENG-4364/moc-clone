@@ -7,7 +7,7 @@ export default function OfficialDocuments() {
   return (
     <div >
       <Title title={"ឯកសារផ្លូវការ"} />
-      <div className="bg-[#F8FCFF] py-12">
+      <div className="bg-[#f6f7f8] py-12">
         <div className="container mx-auto">
           <OfficialDocumentCard />
         </div>
