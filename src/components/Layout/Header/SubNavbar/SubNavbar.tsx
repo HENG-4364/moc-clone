@@ -73,6 +73,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function SubNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 80) {
@@ -177,17 +178,24 @@ export function SubNavbar() {
                     ព័ត៌មានពាណិជ្ជកម្ម
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                      {components.map((component) => (
-                        <ListItem
-                          key={component.title}
-                          title={component.title}
-                          href={component.href}
-                        >
-                          {component.description}
-                        </ListItem>
-                      ))}
-                    </ul>
+                    <div className="flex justify-center">
+                      <div className="grid w-[300px] gap-3 p-4 md:grid-cols-2 ">
+                        {components.map((component) => (
+                          <Link
+                            key={component.title}
+                            href={component.href}
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">
+                              {component.title}
+                            </div>
+                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              {component.description}
+                            </p>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
@@ -211,6 +219,40 @@ export function SubNavbar() {
                       សំណួរចម្លើយ
                     </NavigationMenuLink>
                   </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    className={`${isScrolled ? "text-white" : ""}`}
+                  >
+                    ព័ត៌មានពាណិជ្ជកម្ម
+                  </NavigationMenuTrigger>
+                  <div
+                    // className="absolute bg-white "
+                    className={`absolute top-7 border rounded-md bg-white  mt-4 flex items-center justify-between transition-opacity duration-300 ${
+                      isHovered ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    <div className="flex justify-center">
+                      <div className="grid w-[300px] gap-3 p-4 md:grid-cols-2 ">
+                        {components.map((component) => (
+                          <Link
+                            key={component.title}
+                            href={component.href}
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">
+                              {component.title}
+                            </div>
+                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              {component.description}
+                            </p>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
