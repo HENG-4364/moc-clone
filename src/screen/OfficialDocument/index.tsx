@@ -33,6 +33,12 @@ import {
 } from "@/components/ui/pagination";
 import { OfficialDocumentPagination } from "./components/Pagionation/Pagination";
 import { PdfCard } from "./components/DocumentCard/DocumentCard";
+import {
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 
 const documentTypes = [
   {
@@ -196,10 +202,15 @@ const categories = [
 
 export function OfficialDocumentScreen() {
   const [activeCategory, setActiveCategory] = useState("all");
-
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
+  const { push } = useRouter();
+  const searchParams = useSearchParams();
+  const select = searchParams.get("select");
+  const page = searchParams.get("page");
+  const pathname = usePathname();
+  const params = useParams<{ lang: string }>();
 
   const updateArrows = () => {
     if (scrollContainerRef.current) {
@@ -234,7 +245,18 @@ export function OfficialDocumentScreen() {
       return () => scrollContainer.removeEventListener("scroll", updateArrows);
     }
   }, []);
-
+  const setSelect = (select: any, page?: any) => {
+    if (select && page) {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("page", page);
+      params.set("select", select);
+      push(`${window.location.origin}/${pathname}?${params}`);
+    } else {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("select", select);
+      push(`${window.location.origin}/${pathname}?${params}`);
+    }
+  };
   return (
     <>
       <div className="bg-[#f6f7f8]">
@@ -302,7 +324,9 @@ export function OfficialDocumentScreen() {
                       ? "bg-gradient-to-b from-[#2980B9] to-[#24648f] text-white"
                       : "bg-gray-200"
                   } px-2 py-2 text-sm`}
-                  onClick={() => setActiveCategory(type.id)}
+                  onClick={() => (
+                    setActiveCategory(type.id), setSelect(type.id, "1")
+                  )}
                 >
                   {type.label}
                 </button>
@@ -430,7 +454,7 @@ export function OfficialDocumentScreen() {
           <div className="flex justify-end ">
             <div className="w-full mt-5">
               <OfficialDocumentPagination
-                currentPage={2}
+                currentPage={Number(page)}
                 total={80}
                 size={10}
                 limit={9}

@@ -84,7 +84,7 @@ export function OfficialDocumentPagination({
     </li>
   );
 
-  if (currentPage > 5) {
+  if (currentPage > 4) {
     pages.push(
       <li
         key="_first-dot"
