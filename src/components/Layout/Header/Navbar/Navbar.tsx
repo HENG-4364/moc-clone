@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="container mx-auto w-full">
           <div className="flex justify-between items-center">
             <div>
-              <Link href={`#`}>
+              <Link href={"/"}>
                 <Image
                   src="/moclogo.png"
                   alt="moclogo"
