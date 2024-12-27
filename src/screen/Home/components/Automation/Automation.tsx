@@ -8,7 +8,7 @@ export default function Automation() {
     <div>
       <Title title={"សេវាកម្មស្វ័យប្រវត្តកម្ម"} />
       <div
-        className=" bg-[#2196F3] bg-opacity-90 p-6 flex items-center"
+        className=" bg-[#2196F3] bg-opacity-90 flex items-center"
         style={{
           background: `url(${"/bg-dark.png"}) no-repeat`,
           height: "339px",

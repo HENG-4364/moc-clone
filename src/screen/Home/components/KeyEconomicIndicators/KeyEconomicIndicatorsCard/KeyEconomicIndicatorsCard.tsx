@@ -41,9 +41,9 @@ export default function KeyEconomicIndicatorsCard({
           href={`${link}`}
         >
           <div>
-            <div className="text-[16px] mb-2">{title}</div>
+            <div className="text-[20px] md:text-[18px] mb-2">{title}</div>
             <div className="flex justify-between mb-3">
-              <div className="text-[25px] flex items-center font-medium">
+              <div className="text-[25px] flex items-center font-bold">
                 {name}
               </div>
               <div className="flex justify-end items-center">

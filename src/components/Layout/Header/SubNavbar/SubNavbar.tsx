@@ -32,42 +32,37 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useState } from "react";
+import SubMenuHover from "./Components/MouseHover";
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
+    title: "ឯកសារផ្លូវការ​",
     href: "/docs/primitives/alert-dialog",
     description:
       "A modal dialog that interrupts the user with important content and expects a response.",
   },
   {
-    title: "Hover Card",
+    title: "ព្រឹត្តិប័ត្រព័ត៌មានពាណិជ្ជកម្ម",
     href: "/docs/primitives/hover-card",
     description:
       "For sighted users to preview content available behind a link.",
   },
   {
-    title: "Progress",
+    title: "គម្រោង",
     href: "/docs/primitives/progress",
     description:
       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
   },
   {
-    title: "Scroll-area",
+    title: "តំបន់សេដ្ឋកិច្ចពិសេស",
     href: "/docs/primitives/scroll-area",
     description: "Visually or semantically separates content.",
   },
   {
-    title: "Tabs",
+    title: "របាយការណ៍បូកសរុបសន្និបាតប្រចាំឆ្នាំ",
     href: "/docs/primitives/tabs",
     description:
       "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
 ];
 
@@ -95,10 +90,10 @@ export function SubNavbar() {
       style={{ boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }}
     >
       <div className="container mx-auto ">
-        <div className="hidden xl:flex justify-between items-center py-[10px]">
+        <div className="hidden xl:flex justify-between items-center py-[10px] ">
           <div>
             <NavigationMenu>
-              <NavigationMenuList className="">
+              <NavigationMenuList>
                 <NavigationMenuItem>
                   <Link href="/" legacyBehavior passHref>
                     <NavigationMenuLink
@@ -172,31 +167,37 @@ export function SubNavbar() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger
+                  <SubMenuHover data={components} />
+                  {/* <NavigationMenuTrigger
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
                     className={`${isScrolled ? "text-white" : ""}`}
                   >
                     ព័ត៌មានពាណិជ្ជកម្ម
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="flex justify-center">
-                      <div className="grid w-[300px] gap-3 p-4 md:grid-cols-2 ">
+                  <div
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    className={`absolute mt-1 border rounded-md bg-white  flex items-center justify-between transition-opacity duration-300   ${
+                      isHovered ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    <div className={`flex justify-center `}>
+                      <div className="grid w-[250px] p-2  ">
                         {components.map((component) => (
                           <Link
                             key={component.title}
                             href={component.href}
                             className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           >
-                            <div className="text-sm font-medium leading-none">
+                            <div className="text-sm font-medium">
                               {component.title}
                             </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              {component.description}
-                            </p>
                           </Link>
                         ))}
                       </div>
                     </div>
-                  </NavigationMenuContent>
+                  </div> */}
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/docs" legacyBehavior passHref>
@@ -219,40 +220,6 @@ export function SubNavbar() {
                       សំណួរចម្លើយ
                     </NavigationMenuLink>
                   </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                    className={`${isScrolled ? "text-white" : ""}`}
-                  >
-                    ព័ត៌មានពាណិជ្ជកម្ម
-                  </NavigationMenuTrigger>
-                  <div
-                    // className="absolute bg-white "
-                    className={`absolute top-7 border rounded-md bg-white  mt-4 flex items-center justify-between transition-opacity duration-300 ${
-                      isHovered ? "opacity-100" : "opacity-0"
-                    }`}
-                  >
-                    <div className="flex justify-center">
-                      <div className="grid w-[300px] gap-3 p-4 md:grid-cols-2 ">
-                        {components.map((component) => (
-                          <Link
-                            key={component.title}
-                            href={component.href}
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          >
-                            <div className="text-sm font-medium leading-none">
-                              {component.title}
-                            </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              {component.description}
-                            </p>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
