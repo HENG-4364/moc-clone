@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { Card } from "@/components/ui/card";
-import { Bell, Globe, Lock } from "lucide-react";
+
 import { useEffect, useState } from "react";
 import style from "./swiper.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
