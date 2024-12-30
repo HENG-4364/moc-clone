@@ -39,6 +39,7 @@ import {
   useRouter,
   useSearchParams,
 } from "next/navigation";
+import EmptyData from "./components/EmptyData/EmptyData";
 
 const documentTypes = [
   {
@@ -133,7 +134,7 @@ const documentTypes = [
 //     count: 22,
 //   },
 // ];
-const documents = [
+const all = [
   {
     title: "Cambodia and WTO-Year 2004-KH-Eng",
     date: "០១-កក្កដា-២០២៤",
@@ -166,6 +167,62 @@ const documents = [
     fileSize: "4.2MB",
   },
 ];
+const decree = [
+  {
+    title: "Cambodia and WTO-Year 2004-KH-Eng",
+    date: "០១-កក្កដា-២០២៤",
+    time: "២៣:០០:០០ PM",
+    fileSize: "1.2MB",
+  },
+  {
+    title: "CAMBODIA'S 20-YEAR JOURNEY AS A WTO MEMBER-KH-ENG_FINAL",
+    date: "០១-កក្កដា-២០២៤",
+    time: "០១:០០:០០ PM",
+    fileSize: "3.5MB",
+  },
+  {
+    title: "អនុក្រឹត្យលេខ ២៩៨ អនក្រ.បក ចុះថ្ងៃទី ១៣ ខែ កក្កដា ឆ្នាំ២០២៤",
+    date: "០២-កក្កដា-២០២៤",
+    time: "០២:០០:២០ PM",
+    fileSize: "2.8MB",
+  },
+  {
+    title: "សារាចរណែនាំស្តីពីការអនុវត្ត សេចក្តីសម្រេច ហត្ថ នៃយន្តការ CLV-DTA",
+    date: "០២-កក្កដា-២០២៤",
+    time: "០១:៣៣:២០ AM",
+    fileSize: "1.8MB",
+  },
+  {
+    title:
+      "ប្រកាសអន្តរក្រសួងទីផ្សារមូលបត្រ សេដ្ឋកិច្ចនិងហិរញ្ញវត្ថុ ហត្ថ នៃយន្តការ",
+    date: "០២-កក្កដា-២០២៤",
+    time: "០១:៣៣:២០ AM",
+    fileSize: "4.2MB",
+  },
+  {
+    title:
+      "ប្រកាសអន្តរក្រសួងទីផ្សារមូលបត្រ សេដ្ឋកិច្ចនិងហិរញ្ញវត្ថុ ហត្ថ នៃយន្តការ",
+    date: "០២-កក្កដា-២០២៤",
+    time: "០១:៣៣:២០ AM",
+    fileSize: "4.2MB",
+  },
+  {
+    title:
+      "ប្រកាសអន្តរក្រសួងទីផ្សារមូលបត្រ សេដ្ឋកិច្ចនិងហិរញ្ញវត្ថុ ហត្ថ នៃយន្តការ",
+    date: "០២-កក្កដា-២០២៤",
+    time: "០១:៣៣:២០ AM",
+    fileSize: "4.2MB",
+  },
+];
+
+interface Announcement {
+  title: string;
+  date: string;
+  time: string;
+  fileSize: string;
+}
+const announcement: Announcement[] = [];
+
 const stats = [
   {
     icon: FileText,
@@ -291,7 +348,6 @@ export function OfficialDocumentScreen() {
             <DocumentSearch />
           </div>
 
-          {/* Featured Documents */}
           {/* <div className="mb-12">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-semibold">ឯកសារថ្មីៗ</h2>
@@ -370,97 +426,261 @@ export function OfficialDocumentScreen() {
               />
             </button>
           </div>
-          {/* Document Categories */}
-          {/* <Tabs defaultValue="all" className="w-full">
-            <TabsList className="mb-8 hidden">
-              {documentTypes.map((type) => (
-                <TabsTrigger key={type.id} value={type.id}>
-                  {type.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            <TabsContent
-              value="all"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {documents.map((doc) => {
-                const Icon = doc.icon;
-                return (
-                  <Card
-                    key={doc.id}
-                    className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-none shadow-md"
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex justify-between items-start mb-4">
-                        <div
-                          className={`w-12 h-12 rounded-xl ${doc.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                        >
-                          <Icon className="w-6 h-6" />
-                        </div>
-                        <span className="text-sm text-muted-foreground">
-                          {doc.count} ឯកសារ
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-semibold mb-2">
-                        {doc.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm">
-                        {doc.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </TabsContent>
-          </Tabs> */}
           {activeCategory === "all" && (
-            // <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            //   {documents.map((doc) => {
-            //     const Icon = doc.icon;
-            //     return (
-            //       <Card
-            //         key={doc.id}
-            //         className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-none shadow-md"
-            //       >
-            //         <CardContent className="p-6">
-            //           <div className="flex justify-between items-start mb-4">
-            //             <div
-            //               className={`w-12 h-12 rounded-xl ${doc.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-            //             >
-            //               <Icon className="w-6 h-6" />
-            //             </div>
-            //             <span className="text-sm text-muted-foreground">
-            //               {doc.count} ឯកសារ
-            //             </span>
-            //           </div>
-            //           <h3 className="text-xl font-semibold mb-2">
-            //             {doc.title}
-            //           </h3>
-            //           <p className="text-muted-foreground text-sm">
-            //             {doc.description}
-            //           </p>
-            //         </CardContent>
-            //       </Card>
-            //     );
-            //   })}
-            // </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {documents.map((doc, index) => (
-                <PdfCard key={index} {...doc} />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {all.map((doc, index) => (
+                  <PdfCard key={index} {...doc} />
+                ))}
+              </div>
+              <div className="flex justify-end ">
+                <div className="w-full mt-5">
+                  <OfficialDocumentPagination
+                    currentPage={Number(page)}
+                    total={80}
+                    size={10}
+                    limit={9}
+                  />
+                </div>
+              </div>
+            </>
           )}
-          <div className="flex justify-end ">
-            <div className="w-full mt-5">
-              <OfficialDocumentPagination
-                currentPage={Number(page)}
-                total={80}
-                size={10}
-                limit={9}
-              />
-            </div>
-          </div>
+          {activeCategory === "decree" && (
+            <>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {decree.map((doc, index) => (
+                  <PdfCard key={index} {...doc} />
+                ))}
+              </div>
+              <div className="flex justify-end ">
+                <div className="w-full mt-5">
+                  <OfficialDocumentPagination
+                    currentPage={Number(page)}
+                    total={80}
+                    size={10}
+                    limit={9}
+                  />
+                </div>
+              </div>
+            </>
+          )}
+          {activeCategory === "announcement" && (
+            <>
+              {announcement?.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {announcement.map((doc: any, index: number) => (
+                      <PdfCard key={index} {...doc} />
+                    ))}
+                  </div>
+                  <div className="flex justify-end">
+                    <div className="w-full mt-5">
+                      <OfficialDocumentPagination
+                        currentPage={Number(page)}
+                        total={announcement.length} // Dynamically set total based on announcement length
+                        size={10}
+                        limit={9}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <EmptyData />
+                </div>
+              )}
+            </>
+          )}
+          {activeCategory === "business-law" && (
+            <>
+              {announcement?.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {announcement.map((doc: any, index: number) => (
+                      <PdfCard key={index} {...doc} />
+                    ))}
+                  </div>
+                  <div className="flex justify-end">
+                    <div className="w-full mt-5">
+                      <OfficialDocumentPagination
+                        currentPage={Number(page)}
+                        total={announcement.length} // Dynamically set total based on announcement length
+                        size={10}
+                        limit={9}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <EmptyData />
+                </div>
+              )}
+            </>
+          )}
+          {activeCategory === "agreement" && (
+            <>
+              {announcement?.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {announcement.map((doc: any, index: number) => (
+                      <PdfCard key={index} {...doc} />
+                    ))}
+                  </div>
+                  <div className="flex justify-end">
+                    <div className="w-full mt-5">
+                      <OfficialDocumentPagination
+                        currentPage={Number(page)}
+                        total={announcement.length} // Dynamically set total based on announcement length
+                        size={10}
+                        limit={9}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <EmptyData />
+                </div>
+              )}
+            </>
+          )}
+          {activeCategory ===
+            "budget-management-of-the-ministry-of-commerce" && (
+            <>
+              {announcement?.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {announcement.map((doc: any, index: number) => (
+                      <PdfCard key={index} {...doc} />
+                    ))}
+                  </div>
+                  <div className="flex justify-end">
+                    <div className="w-full mt-5">
+                      <OfficialDocumentPagination
+                        currentPage={Number(page)}
+                        total={announcement.length} // Dynamically set total based on announcement length
+                        size={10}
+                        limit={9}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <EmptyData />
+                </div>
+              )}
+            </>
+          )}
+          {activeCategory === "notice" && (
+            <>
+              {announcement?.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {announcement.map((doc: any, index: number) => (
+                      <PdfCard key={index} {...doc} />
+                    ))}
+                  </div>
+                  <div className="flex justify-end">
+                    <div className="w-full mt-5">
+                      <OfficialDocumentPagination
+                        currentPage={Number(page)}
+                        total={announcement.length} // Dynamically set total based on announcement length
+                        size={10}
+                        limit={9}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <EmptyData />
+                </div>
+              )}
+            </>
+          )}
+          {activeCategory === "policy" && (
+            <>
+              {announcement?.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {announcement.map((doc: any, index: number) => (
+                      <PdfCard key={index} {...doc} />
+                    ))}
+                  </div>
+                  <div className="flex justify-end">
+                    <div className="w-full mt-5">
+                      <OfficialDocumentPagination
+                        currentPage={Number(page)}
+                        total={announcement.length} // Dynamically set total based on announcement length
+                        size={10}
+                        limit={9}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <EmptyData />
+                </div>
+              )}
+            </>
+          )}
+          {activeCategory === "clv-dta" && (
+            <>
+              {announcement?.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {announcement.map((doc: any, index: number) => (
+                      <PdfCard key={index} {...doc} />
+                    ))}
+                  </div>
+                  <div className="flex justify-end">
+                    <div className="w-full mt-5">
+                      <OfficialDocumentPagination
+                        currentPage={Number(page)}
+                        total={announcement.length} // Dynamically set total based on announcement length
+                        size={10}
+                        limit={9}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <EmptyData />
+                </div>
+              )}
+            </>
+          )}
+          {activeCategory === "wto-file" && (
+            <>
+              {announcement?.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {announcement.map((doc: any, index: number) => (
+                      <PdfCard key={index} {...doc} />
+                    ))}
+                  </div>
+                  <div className="flex justify-end">
+                    <div className="w-full mt-5">
+                      <OfficialDocumentPagination
+                        currentPage={Number(page)}
+                        total={announcement.length} // Dynamically set total based on announcement length
+                        size={10}
+                        limit={9}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <EmptyData />
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
     </>

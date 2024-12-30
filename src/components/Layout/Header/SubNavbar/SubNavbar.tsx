@@ -47,24 +47,24 @@ const business_information: {
   },
   {
     title: "ព្រឹត្តិប័ត្រព័ត៌មានពាណិជ្ជកម្ម",
-    href: "/document-category/official-document",
+    href: "/document-category/bulletin",
     description:
       "For sighted users to preview content available behind a link.",
   },
   {
     title: "គម្រោង",
-    href: "/document-category/official-document",
+    href: "/document-category/projects",
     description:
       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
   },
   {
     title: "តំបន់សេដ្ឋកិច្ចពិសេស",
-    href: "/document-category/official-document",
+    href: "/document-category/special-economic-zone",
     description: "Visually or semantically separates content.",
   },
   {
     title: "របាយការណ៍បូកសរុបសន្និបាតប្រចាំឆ្នាំ",
-    href: "/document-category/official-document",
+    href: "/document-category/annual-meeting-report",
     description:
       "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
   },
@@ -139,7 +139,7 @@ export function SubNavbar() {
       <div className="container mx-auto ">
         <div className="hidden xl:flex justify-between items-center py-[10px] ">
           <div>
-            <NavigationMenu >
+            <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <Link href="/" legacyBehavior passHref>
