@@ -38,7 +38,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="bg-[#2980B9] py-[10px]">
+      <div className="bg-[#2980B9] py-[10px]  xl:hidden sticky top-0 z-50 transition-colors duration-300 ease-in-out">
         <div className="container mx-auto w-full">
           <div className="flex justify-between items-center">
             <div>
@@ -54,20 +54,7 @@ const Navbar = () => {
                 />
               </Link>
             </div>
-            <div className="hidden xl:block">
-              <Link href={`#`}>
-                <Image
-                  src="/kh-flag-title.png"
-                  alt="moclogo"
-                  className="w-[163px] sm:w-[261px]"
-                  width={1500}
-                  height={416}
-                  quality={100}
-                  priority
-                />
-              </Link>
-            </div>
-            <div className="xl:hidden flex items-start gap-3 cursor-pointer">
+            <div className="flex items-start gap-3 cursor-pointer">
               <div>
                 <div className="pe-3 " onClick={onHandleChangeLanguage}>
                   <Image
@@ -94,6 +81,38 @@ const Navbar = () => {
                 </Sheet>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[#2980B9] py-[10px] hidden xl:block top-0 z-50 transition-colors duration-300 ease-in-out">
+        <div className="container mx-auto w-full">
+          <div className="flex justify-between items-center">
+            <div>
+              <Link href={"/"}>
+                <Image
+                  src="/moclogo.png"
+                  alt="moclogo"
+                  className="w-[163px] sm:w-[261px]"
+                  width={1500}
+                  height={416}
+                  quality={100}
+                  priority
+                />
+              </Link>
+            </div>
+            <div className="">
+              <Link href={`#`}>
+                <Image
+                  src="/kh-flag-title.png"
+                  alt="moclogo"
+                  className="w-[163px] sm:w-[261px]"
+                  width={1500}
+                  height={416}
+                  quality={100}
+                  priority
+                />
+              </Link>
+            </div> 
           </div>
         </div>
       </div>
