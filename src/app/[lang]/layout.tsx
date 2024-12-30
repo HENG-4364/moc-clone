@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./globals.css";
 import { Layout } from "@/components/Layout";
 import { Hanuman, Moul } from "next/font/google";
 
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${hanuman.className} ${moul.className}`}>
-        {children}
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

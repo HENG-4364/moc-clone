@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useState } from "react";
 import SubMenuHover from "./Components/MouseHover";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 const business_information: {
   title: string;
@@ -116,6 +117,25 @@ const about_ministry: {
 export function SubNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const params = useParams<{ lang: string }>();
+  const router = useRouter();
+  const pathname = usePathname();
+  const [language, setlanguage] = useState(
+    params?.lang === "en-US" ? true : false
+  );
+  const { lang } = params;
+  const onHandleChangeLanguage = () => {
+    const { search } = window.location;
+    const currentLang = params?.lang;
+    if (pathname?.includes(currentLang || "")) {
+      const newPathname = pathname?.replace(
+        currentLang,
+        currentLang === "en-US" ? "kh" : "en-US"
+      );
+      router.push(`${newPathname}${search}`);
+      setlanguage(!language);
+    }
+  };
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 80) {
@@ -152,7 +172,7 @@ export function SubNavbar() {
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-                <NavigationMenuItem >
+                <NavigationMenuItem>
                   <SubMenuHover data={about_ministry} menuName="អំពីក្រសួង" />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
@@ -218,18 +238,20 @@ export function SubNavbar() {
             </svg>
             <div>
               <div className="flex items-center gap-2">
-                <div>KH</div>
-                <Image
-                  width={500}
-                  height={500}
-                  src={"/Flag_of_Cambodia.png"}
-                  alt=""
-                  style={{
-                    width: "25px",
-                    height: "18px",
-                    cursor: "pointer",
-                  }}
-                />
+                <div className={`${lang === "kh" ? "pt-1" : ""}`}>{lang === "kh" ? "EN" : "ខ្មែរ"}</div>
+                <div className="pe-3 " onClick={onHandleChangeLanguage}>
+                  <Image
+                    width={500}
+                    height={500}
+                    src={`${
+                      lang === "en-US"
+                        ? "/Flag_of_Cambodia.png"
+                        : "/Flag_of_the_United_Kingdom.png"
+                    }`}
+                    alt="MoC Flag Change Language"
+                    className="w-[25px]"
+                  />
+                </div>
               </div>
             </div>
             <svg

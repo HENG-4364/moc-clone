@@ -1,5 +1,6 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Menu, Search } from "lucide-react";
 import {
@@ -13,8 +14,28 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import MobileNav from "../SubNavbar/Components/MobileNav/MobileNav";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const params = useParams<{ lang: string }>();
+  const router = useRouter();
+  const pathname = usePathname();
+  const [language, setlanguage] = useState(
+    params?.lang === "en-US" ? true : false
+  );
+  const { lang } = params;
+  const onHandleChangeLanguage = () => {
+    const { search } = window.location;
+    const currentLang = params?.lang;
+    if (pathname?.includes(currentLang || "")) {
+      const newPathname = pathname?.replace(
+        currentLang,
+        currentLang === "en-US" ? "kh" : "en-US"
+      );
+      router.push(`${newPathname}${search}`);
+      setlanguage(!language);
+    }
+  };
   return (
     <>
       <div className="bg-[#2980B9] py-[10px]">
@@ -48,13 +69,19 @@ const Navbar = () => {
             </div>
             <div className="xl:hidden flex items-start gap-3 cursor-pointer">
               <div>
-                <Image
-                  width={500}
-                  height={500}
-                  src={"/Flag_of_Cambodia.png"}
-                  alt="MoC Flag Change Language"
-                  className="w-[25px] pt-1 "
-                />
+                <div className="pe-3 " onClick={onHandleChangeLanguage}>
+                  <Image
+                    width={500}
+                    height={500}
+                    src={`${
+                      lang === "en-US"
+                        ? "/Flag_of_Cambodia.png"
+                        : "/Flag_of_the_United_Kingdom.png"
+                    }`}
+                    alt="MoC Flag Change Language"
+                    className="w-[25px] pt-1 "
+                  />
+                </div>
               </div>
               <div>
                 <Search size={23} color="white" />
@@ -64,18 +91,6 @@ const Navbar = () => {
                   <SheetTrigger asChild>
                     <MobileNav />
                   </SheetTrigger>
-                  <SheetContent>
-                    <SheetHeader>
-                      <SheetTitle>Edit profile</SheetTitle>
-                      <SheetDescription>
-                        Make changes to your profile here. Click save when
-                        you're done.
-                      </SheetDescription>
-                    </SheetHeader>
-                    <SheetFooter>
-                      <SheetClose asChild>......</SheetClose>
-                    </SheetFooter>
-                  </SheetContent>
                 </Sheet>
               </div>
             </div>

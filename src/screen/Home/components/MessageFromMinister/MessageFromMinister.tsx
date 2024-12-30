@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { Card, CardContent } from "@/components/ui/card";
-import { Title } from "@/components/Title/Title";
+import style from "./message-from-minister.module.scss";
 
 interface MessageFromMinisterProps {
   title: string;
@@ -19,6 +18,7 @@ export function MessageFromMinister({
   image,
 }: MessageFromMinisterProps) {
   const params = useParams<{ lang: string }>();
+  const currentLang = params?.lang;
 
   return (
     <div
@@ -48,21 +48,39 @@ export function MessageFromMinister({
             <div className="space-y-6">
               <div className={` `}>
                 <div className="mb-6">
-                  <div
-                    className=" mb-5 text-[23px] lg:text-[28px] xl:text-[36px] leading-[1.8]"
-                    style={{
-                      fontFamily: "Moul, serif !important",
-                    }}
-                  >
-                    {title}
-                  </div>
+                  {currentLang === "kh" ? (
+                    <>
+                      <div
+                        className={` mb-5 text-[23px] lg:text-[28px] xl:text-[36px] leading-[1.8] ${style.font_fam}`}
+                        style={{
+                          fontFamily: "Moul, serif !important",
+                        }}
+                      >
+                        {title}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div
+                        className={` mb-5 text-[23px] lg:text-[28px] xl:text-[36px] leading-[1.8] uppercase ${style.font_fam_en}`}
+                        style={{
+                          fontWeight: "700  !important",
+                        }}
+                      >
+                        {title}
+                      </div>
+                    </>
+                  )}
+
                   <div className="flex items-center gap-2">
                     <div className="h-1 w-24 bg-[#FAB4A2]" />
                     <div className="h-1 w-8 bg-[#FE724E]" />
                   </div>
                 </div>
               </div>
-              <div className="leading-[2] text-[18px] lg:text-[20px] font-semibold">{subtitle}</div>
+              <div className="leading-[2] text-[18px] lg:text-[20px] font-semibold">
+                {subtitle}
+              </div>
               {/* Uncomment and adjust as needed for the button
               <Link
                 href={`/${currentLang}/page/messages-from-minister`}
