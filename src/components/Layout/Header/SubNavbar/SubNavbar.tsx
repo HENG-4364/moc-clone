@@ -144,7 +144,7 @@ export function SubNavbar() {
                 <NavigationMenuItem>
                   <Link href="/" legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={`${
+                      className={`text-base md:text-[16px] font-semibold ${
                         isScrolled ? "text-white" : ""
                       } ${navigationMenuTriggerStyle()}`}
                     >
@@ -152,7 +152,7 @@ export function SubNavbar() {
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
+                <NavigationMenuItem >
                   <SubMenuHover data={about_ministry} menuName="អំពីក្រសួង" />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
@@ -170,7 +170,7 @@ export function SubNavbar() {
                 <NavigationMenuItem>
                   <Link href="/docs" legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={`${
+                      className={`text-base md:text-[16px] font-semibold ${
                         isScrolled ? "text-white" : ""
                       } ${navigationMenuTriggerStyle()}`}
                     >
@@ -181,7 +181,7 @@ export function SubNavbar() {
                 <NavigationMenuItem>
                   <Link href="/docs" legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={`${
+                      className={`text-base md:text-[16px] font-semibold ${
                         isScrolled ? "text-white" : ""
                       } ${navigationMenuTriggerStyle()}`}
                     >

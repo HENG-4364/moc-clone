@@ -70,12 +70,12 @@ export default function OfficialDocumentCard() {
                 >
                   <Icon className="w-8 h-8" />
                 </div>
-                <span className="text-sm text-muted-foreground">
+                <span className="text-md text-muted-foreground">
                   {23} ឯកសារ
                 </span>
               </div>
               <h3 className="text-xl font-semibold mb-2">{doc.title}</h3>
-              <p className="text-muted-foreground text-sm">{doc.description}</p>
+              <p className="text-muted-foreground text-md">{doc.description}</p>
             </CardContent>
           </Card>
         );

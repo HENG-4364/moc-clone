@@ -51,7 +51,7 @@ export function MessageFromMinister({
                   <div
                     className=" mb-5 text-[23px] lg:text-[28px] xl:text-[36px] leading-[1.8]"
                     style={{
-                      fontFamily: "Moul, serif",
+                      fontFamily: "Moul, serif !important",
                     }}
                   >
                     {title}
@@ -62,7 +62,7 @@ export function MessageFromMinister({
                   </div>
                 </div>
               </div>
-              <div className="leading-[2] text-[16px] lg:text-[18px] font-semibold">{subtitle}</div>
+              <div className="leading-[2] text-[18px] lg:text-[20px] font-semibold">{subtitle}</div>
               {/* Uncomment and adjust as needed for the button
               <Link
                 href={`/${currentLang}/page/messages-from-minister`}

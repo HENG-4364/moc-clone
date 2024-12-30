@@ -56,7 +56,7 @@ const SubMenuHover: React.FC<SubMenuHoverProp> = ({ data = [], menuName }) => {
       <NavigationMenuTrigger
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={`${isScrolled ? "text-white" : ""}`}
+        className={`text-base md:text-[16px] font-semibold ${isScrolled ? "text-white" : ""}`}
       >
         {menuName}
       </NavigationMenuTrigger>
@@ -69,14 +69,14 @@ const SubMenuHover: React.FC<SubMenuHoverProp> = ({ data = [], menuName }) => {
           }`}
         >
           <div className={`flex justify-center`}>
-            <div className="grid w-[250px] p-2">
+            <div className="grid w-[250px] p-2 text-base md:text-[16px] font-semibold">
               {data.map((item: SubMenuItem) => (
                 <Link
                   key={item.title}
                   href={item.href}
                   className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                 >
-                  <div className="text-sm font-medium">{item.title}</div>
+                  <div >{item.title}</div>
                 </Link>
               ))}
             </div>

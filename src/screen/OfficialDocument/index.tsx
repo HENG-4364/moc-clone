@@ -379,7 +379,7 @@ export function OfficialDocumentScreen() {
                     activeCategory === type.id
                       ? "bg-gradient-to-b from-[#2980B9] to-[#24648f] text-white"
                       : "bg-gray-200"
-                  } px-2 py-2 text-sm`}
+                  } px-2 py-2 text-md`}
                   onClick={() => (
                     setActiveCategory(type.id), setSelect(type.id, "1")
                   )}
