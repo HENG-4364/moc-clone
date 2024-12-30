@@ -317,7 +317,7 @@ export function OfficialDocumentScreen() {
   return (
     <>
       <div className="bg-[#f6f7f8]">
-        <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 pb-12">
           {/* Header */}
           <div className="text-center mb-3">
             <Title title={"ឯកសារផ្លូវការ"} />

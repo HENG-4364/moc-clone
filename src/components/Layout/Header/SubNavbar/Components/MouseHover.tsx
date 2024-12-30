@@ -69,12 +69,12 @@ const SubMenuHover: React.FC<SubMenuHoverProp> = ({ data = [], menuName }) => {
           }`}
         >
           <div className={`flex justify-center`}>
-            <div className="grid w-[250px] p-2 text-base md:text-[16px] font-semibold">
+            <div className="grid w-[250px] p-2 text-base md:text-[16px] font-semibold gap-2">
               {data.map((item: SubMenuItem) => (
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                  className="block select-none space-y-1 rounded-md p-2  leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                 >
                   <div >{item.title}</div>
                 </Link>
