@@ -12,6 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import MobileNav from "../SubNavbar/Components/MobileNav/MobileNav";
 
 const Navbar = () => {
   return (
@@ -61,7 +62,7 @@ const Navbar = () => {
               <div>
                 <Sheet>
                   <SheetTrigger asChild>
-                    <Menu size={23} color="white" />
+                    <MobileNav />
                   </SheetTrigger>
                   <SheetContent>
                     <SheetHeader>
