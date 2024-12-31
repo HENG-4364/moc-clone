@@ -18,9 +18,7 @@ export async function generateMetadata({
   params: any;
 }): Promise<Metadata> {
   const { lang } = params;
-
   const dict = await getDictionaryByFolder(lang, "home");
-
   return {
     title: dict?.head_title,
   };

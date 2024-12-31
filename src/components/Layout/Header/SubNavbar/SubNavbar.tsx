@@ -96,12 +96,18 @@ const about_ministry: {
 }[] = [
   {
     title: "ប្រសាស៍ពីលោកជំទាវរដ្ឋមន្រ្តី​",
-    href: "#",
+    href: "/page/messages-from-minister",
     description:
       "A modal dialog that interrupts the user with important content and expects a response.",
   },
   {
     title: "ប្រវត្តិក្រសួងពាណិជ្ជកម្ម",
+    href: "#",
+    description:
+      "For sighted users to preview content available behind a link.",
+  },
+  {
+    title: "រចនាសម្ព័ន្ធអង្គភាព",
     href: "#",
     description:
       "For sighted users to preview content available behind a link.",
@@ -238,7 +244,9 @@ export function SubNavbar() {
             </svg>
             <div>
               <div className="flex items-center gap-2">
-                <div className={`${lang === "kh" ? "pt-1" : ""}`}>{lang === "kh" ? "EN" : "ខ្មែរ"}</div>
+                <div className={`${lang === "kh" ? "pt-1" : ""}`}>
+                  {lang === "kh" ? "EN" : "ខ្មែរ"}
+                </div>
                 <div className="pe-3 " onClick={onHandleChangeLanguage}>
                   <Image
                     width={500}
