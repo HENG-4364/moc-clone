@@ -194,7 +194,7 @@ export function SubNavbar() {
                   />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/docs" legacyBehavior passHref>
+                  <Link href="/news" legacyBehavior passHref>
                     <NavigationMenuLink
                       className={`text-base md:text-[16px] font-semibold ${
                         isScrolled ? "text-white" : ""
@@ -204,17 +204,7 @@ export function SubNavbar() {
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/docs" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={`text-base md:text-[16px] font-semibold ${
-                        isScrolled ? "text-white" : ""
-                      } ${navigationMenuTriggerStyle()}`}
-                    >
-                      សំណួរចម្លើយ
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
+                
               </NavigationMenuList>
             </NavigationMenu>
           </div>
