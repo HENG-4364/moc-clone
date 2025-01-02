@@ -16,14 +16,14 @@ export default function LoadingSpinner({
   useEffect(() => {
     const timer = setTimeout(() => {
       setShow(false);
-    }, 5000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
 
   if (!show) return null;
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white overflow-hidden">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white overflow-hidden ">
       {/* Floating Particles */}
       <div className="absolute inset-0">
         {[...Array(5)].map((_, i) => (
