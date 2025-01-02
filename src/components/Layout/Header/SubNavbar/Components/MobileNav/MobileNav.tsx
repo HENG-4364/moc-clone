@@ -189,7 +189,7 @@ export default function MobileNav() {
             </AccordionContent>
           </AccordionItem>
           <div className="py-2 text-lg hover:font-semibold hover:bg-accent hover:px-2 rounded-md transition-all duration-300 cursor-pointer">
-            <Link href="#" onClick={handleLinkClick}>
+            <Link href="/news" onClick={handleLinkClick}>
               ព័ត៌មាន
             </Link>
           </div>

@@ -18,7 +18,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       // Set a 5-second delay before hiding the spinner
       setTimeout(() => {
         setIsLoading(false);
-      }, 5000);
+      }, 1500);
     };
 
     handleStart(); // Set initial state to loading
