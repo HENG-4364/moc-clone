@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Layout } from "@/components/Layout";
 import { Hanuman, Moul } from "next/font/google";
-
+import "./globals.css";
 const hanuman = Hanuman({
   subsets: ["latin"],
   display: "swap",
