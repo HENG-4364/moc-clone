@@ -38,7 +38,7 @@ export default function LoadingSpinner({
             }}
           >
             <Image
-              src="/moc-logo.png"
+              src="/flower-bg-loading.png"
               alt="floating-logo"
               width={40}
               height={40}
