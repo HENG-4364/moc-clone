@@ -75,7 +75,7 @@ const HighPotentialProductsScreen: React.FC = () => {
     <section className="bg-[#f6f7f8]">
       <div className="container mx-auto px-4 pb-12">
         <Title title="មុខទំនិញសក្ដានុពលខ្ពស់" />
-        <div className="grid grid-cols-11 gap-6 ">
+        <div className="lg:grid grid-cols-11 gap-6 hidden">
           {/* Sidebar */}
           <div className="col-span-3 bg-white shadow-md">
             <div className="w-full shadow-sm">
@@ -88,7 +88,7 @@ const HighPotentialProductsScreen: React.FC = () => {
                       "hover:bg-gray-50",
                       verticalTab === type.id
                         ? "bg-gradient-to-b from-[#2980B9] to-[#286e9d] text-white"
-                        : "after:bg-transparent "
+                        : "after:bg-transparent border border-gray-100"
                     )}
                     onClick={() => (
                       setVerticalTab(type.id), setVertical(type.id)
@@ -112,7 +112,7 @@ const HighPotentialProductsScreen: React.FC = () => {
                   <button
                     key={type.id}
                     className={cn(
-                      "px-4 py-2 rounded-md transition-all duration-200 font-semibold text-[18px] ",
+                      "px-4 py-2 rounded-md transition-all duration-200 font-semibold text-[15px] xl:text-[16px]",
                       "hover:bg-gray-50",
                       "relative",
                       "after:absolute after:bottom-0 after:left-0 after:right-0",
