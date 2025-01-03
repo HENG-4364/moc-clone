@@ -20,6 +20,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaFacebookF, FaYoutube, FaXTwitter } from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 const business_information: {
   title: string;
   href: string;
@@ -58,7 +59,7 @@ const business_information: {
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
-
+  const router = useRouter();
   const handleLinkClick = () => {
     setOpen(false);
   };
@@ -95,8 +96,11 @@ export default function MobileNav() {
           </div>
         </div>
         <Accordion type="single" collapsible className="w-full">
-          <div className="py-2 hover:font-semibold hover:bg-accent hover:px-2 rounded-md transition-all duration-300 cursor-pointer">
-            <Link href="#" className="text-lg" onClick={handleLinkClick}>
+          <div
+            onClick={() => (router.push("/"), setOpen(false))}
+            className="py-2 hover:font-semibold hover:bg-accent hover:px-2 rounded-md transition-all duration-300 cursor-pointer"
+          >
+            <Link href="/" className="text-lg w-full">
               ទំព័រដើម
             </Link>
           </div>
@@ -188,8 +192,8 @@ export default function MobileNav() {
               ))}
             </AccordionContent>
           </AccordionItem>
-          <div className="py-2 text-lg hover:font-semibold hover:bg-accent hover:px-2 rounded-md transition-all duration-300 cursor-pointer">
-            <Link href="/news" onClick={handleLinkClick}>
+          <div  onClick={() => (router.push("/news"), setOpen(false))} className="py-2 text-lg hover:font-semibold hover:bg-accent hover:px-2 rounded-md transition-all duration-300 cursor-pointer">
+            <Link href="/news" >
               ព័ត៌មាន
             </Link>
           </div>
