@@ -240,7 +240,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none hidden xl:block">
             <div className="absolute right-0 top-0 w-[400px] h-full">
               <Image
                 src="/footer.png"
