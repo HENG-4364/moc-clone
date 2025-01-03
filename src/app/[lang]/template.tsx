@@ -18,7 +18,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       // Set a 5-second delay before hiding the spinner
       setTimeout(() => {
         setIsLoading(false);
-      }, 1500);
+      }, 800);
     };
 
     handleStart(); // Set initial state to loading
@@ -36,7 +36,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     // Set a 5-second delay before hiding the spinner on route changes
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 800);
   }, [pathname, searchParams]);
 
   return (
