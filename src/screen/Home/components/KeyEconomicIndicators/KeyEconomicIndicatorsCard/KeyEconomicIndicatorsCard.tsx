@@ -34,12 +34,7 @@ export default function KeyEconomicIndicatorsCard({
       onClick={handleClick}
     >
       <CardContent className="p-5">
-        <Link
-          target="_blank"
-          rel="noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          href={`${link}`}
-        >
+        
           <div>
             <div className="text-[20px] md:text-[18px] mb-2">{title}</div>
             <div className="flex justify-between mb-3">
@@ -54,7 +49,6 @@ export default function KeyEconomicIndicatorsCard({
               <div className="text-[14px]">កាលបរិច្ឆេទ​ : {date}</div>
             </div>
           </div>
-        </Link>
       </CardContent>
     </Card>
   );
