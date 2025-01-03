@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import KeyEconomicIndicatorsCard from "../KeyEconomicIndicatorsCard/KeyEconomicIndicatorsCard";
 import { TopExportProductModal } from "./ExportGoodDailog/ExportGoodDailog";
+import { useRouter } from "next/navigation";
 
 const slides = [
   {
@@ -69,6 +70,7 @@ const treatments: Treatment[] = [
 export default function KeyEconomicIndicatorsSwiper() {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   // Prevent hydration issues with Swiper
   useEffect(() => {
     setMounted(true);
@@ -129,7 +131,9 @@ export default function KeyEconomicIndicatorsSwiper() {
               link="#"
             />
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide
+            onClick={() => router.push("/post/high-potential-products")}
+          >
             <KeyEconomicIndicatorsCard
               title={"ទំនិញសក្ដានុពល"}
               image={"/cashew.png"}
