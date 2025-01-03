@@ -41,7 +41,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {isLoading && <LoadingSpinner title={"vdsfs"} />}
+      {isLoading && <LoadingSpinner />}
       {children}
     </>
   );
