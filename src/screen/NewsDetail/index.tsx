@@ -45,7 +45,7 @@ function NewsDetailScreen() {
                   នៅក្នុងពិព័រណ៍ទំនិញនាំចូលអន្តរជាតិចិន លើកទី៧ នៅទីក្រុងសៀងហៃ
                   សាធារណរដ្ឋប្រជាមានិតចិន នាថ្ងៃទី៧ ខែវិច្ឆិកា ឆ្នាំ២០២៤
                 </div>
-                <div className="flex items-center text-base text-gray-600">
+                <div className="flex flex-wrap items-center text-sm md:text-base text-gray-600">
                   <Calendar className="" size={20} />
                   <span className="ml-2">
                     ថ្ងៃផ្សព្វផ្សាយ: <strong>០៧-វិច្ឆិកា-២០២៤</strong>
