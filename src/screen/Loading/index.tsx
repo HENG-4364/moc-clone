@@ -2,15 +2,9 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-type LoadingSpinnerProps = {
-  title: string;
-  isDark?: boolean;
-};
 
-export default function LoadingSpinner({
-  title,
-  isDark = false,
-}: LoadingSpinnerProps) {
+
+export default function LoadingSpinner() {
   const [show, setShow] = useState(true);
 
   useEffect(() => {
