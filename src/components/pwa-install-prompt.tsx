@@ -68,7 +68,7 @@ export function PWAInstallPrompt() {
     <div className="fixed bottom-0 left-0 right-0 p-4 z-50">
       <Card className="mx-auto max-w-md bg-white shadow-lg">
         <div className="p-4">
-          <div className="flex justify-between items-start">
+          {/* <div className="flex justify-between items-start">
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-gray-900">
                 {isIOS ? 'Install this app on your iPhone' : 'Install our app'}
@@ -97,7 +97,17 @@ export function PWAInstallPrompt() {
             >
               <X className="h-5 w-5" />
             </button>
-          </div>
+          </div> */}
+          {isIOS && (
+            <div className="mt-4">
+              <Button
+                onClick={handleInstall}
+                className="w-full"
+              >
+                Install App
+              </Button>
+            </div>
+          )}
           {!isIOS && (
             <div className="mt-4">
               <Button
