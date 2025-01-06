@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Layout } from "@/components/Layout";
 import { Hanuman, Moul } from "next/font/google";
 import "./globals.css";
+import { PWAInstallPrompt } from "@/components/pwa-install-prompt";
 const hanuman = Hanuman({
   subsets: ["latin"],
   display: "swap",
@@ -218,6 +219,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${hanuman.className} ${moul.className}`}>
         {children}
+        <PWAInstallPrompt />
       </body>
     </html>
   );
