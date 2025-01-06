@@ -4,6 +4,7 @@
 
 body {
   font-family: "Hanuman" !important;
+  background-color: #2980B9;
 }
 .scrollbar-hide {
   -ms-overflow-style: none;

@@ -28,7 +28,7 @@ export const metadata = {
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "#2980B9",
     appleTouchIcon: "/apple-icon-180.png",
     startupImage: [
       {
@@ -208,8 +208,6 @@ export const metadata = {
 export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
-  themeColor: "#2980B9",
-  
 };
 export default function RootLayout({
   children,
