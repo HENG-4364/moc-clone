@@ -15,7 +15,6 @@ export function PWAInstallPrompt() {
   const [showPrompt, setShowPrompt] = useState(false)
   const [isIOS, setIsIOS] = useState(false)
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
-  const [showIOSInstructions, setShowIOSInstructions] = useState(false)
 
   useEffect(() => {
     // Check if prompt has been shown before
@@ -60,7 +59,6 @@ export function PWAInstallPrompt() {
 
   const handleClose = () => {
     setShowPrompt(false)
-    setShowIOSInstructions(false)
     localStorage.setItem('pwaPromptShown', 'true')
   }
 
@@ -73,11 +71,24 @@ export function PWAInstallPrompt() {
           <div className="flex justify-between items-start">
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-gray-900">
-                Install our app
+                {isIOS ? 'Install this app on your iPhone' : 'Install our app'}
               </h3>
-              <p className="mt-2 text-sm text-gray-600">
-                Install our app for quick and easy access when you're on the go.
-              </p>
+              {isIOS ? (
+                <div className="mt-2 space-y-3">
+                  <p className="text-sm text-gray-600">
+                    Install this application on your home screen for quick and easy access:
+                  </p>
+                  <ol className="text-sm text-gray-600 list-decimal pl-4 space-y-2">
+                    <li>Tap the share button <span className="inline-block w-6 h-6 align-middle">⎙</span></li>
+                    <li>Scroll down and tap &quot;Add to Home Screen&quot;</li>
+                    <li>Tap &quot;Add&quot; to install it</li>
+                  </ol>
+                </div>
+              ) : (
+                <p className="mt-2 text-sm text-gray-600">
+                  Install our app for quick and easy access when you&apos;re on the go.
+                </p>
+              )}
             </div>
             <button
               onClick={handleClose}
@@ -87,24 +98,14 @@ export function PWAInstallPrompt() {
               <X className="h-5 w-5" />
             </button>
           </div>
-          <div className="mt-4">
-            <Button
-              onClick={isIOS ? () => setShowIOSInstructions(!showIOSInstructions) : handleInstall}
-              className="w-full"
-            >
-              Install App
-            </Button>
-          </div>
-          {isIOS && showIOSInstructions && (
-            <div className="mt-4 space-y-3">
-              <p className="text-sm text-gray-600">
-                To install, follow these steps:
-              </p>
-              <ol className="text-sm text-gray-600 list-decimal pl-4 space-y-2">
-                <li>Tap the share button <span className="inline-block w-6 h-6 align-middle">⎙</span></li>
-                <li>Scroll down and tap "Add to Home Screen"</li>
-                <li>Tap "Add" to install it</li>
-              </ol>
+          {!isIOS && (
+            <div className="mt-4">
+              <Button
+                onClick={handleInstall}
+                className="w-full"
+              >
+                Install App
+              </Button>
             </div>
           )}
         </div>
