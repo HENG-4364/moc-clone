@@ -2,8 +2,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-
-
 export default function LoadingSpinner() {
   const [show, setShow] = useState(true);
 
@@ -66,12 +64,12 @@ export default function LoadingSpinner() {
       {/* Logo and Text */}
       <div className="relative z-10 flex flex-col items-center space-y-4">
         <Image
-          src="/moc-logo.png"
+          src="/logo-loading.svg"
           alt="Ministry of Interior Logo"
           width={480}
           height={480}
           priority
-          className="animate-fade-in w-[200px] md:w-[300px] xl:w-[400px]"
+          className="animate-fade-in w-[150px] md:w-[200px] xl:w-[300px]"
         />
         {/* <div className="mt-5">
           <div className="w-8 h-8 border-4 border-gray-500 border-t-transparent rounded-full animate-spin"></div>
