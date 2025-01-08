@@ -13,6 +13,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import CashewTab from "./Components/CashewTab";
 import { parseAsString, useQueryState } from "nuqs";
+import RiceTab from "./Components/Ricetab";
 export const highPotentialProductsVerticalTabs = [
   { id: 1, label: "គ្រាប់ស្វាយចន្ទី", value: "cashew" },
   { id: 2, label: "ដំឡូងមី", value: "cassava" },
@@ -49,6 +50,32 @@ const HighPotentialProductsScreen: React.FC = () => {
   //   params.set("horizontalTab", horizontalTab);
   //   push(`${window.location.origin}/${pathname}?${params}`);
   // };
+  let verticalTabTabPotentialProducts: React.ReactNode;
+
+  switch (verticalTab) {
+    case "cashew":
+      verticalTabTabPotentialProducts = <CashewTab />;
+      break;
+
+    case "cassava":
+      verticalTabTabPotentialProducts = <></>;
+      break;
+
+    case "pailinLongan":
+      verticalTabTabPotentialProducts = <></>;
+      break;
+    case "rice":
+      verticalTabTabPotentialProducts = <RiceTab />;
+      break;
+
+    case "pepper":
+      verticalTabTabPotentialProducts = <></>;
+      break;
+
+    default:
+      verticalTabTabPotentialProducts = <CashewTab />;
+      break;
+  }
   return (
     <section className="bg-[#f6f7f8]">
       <div className="container mx-auto px-4 pb-12">
@@ -81,7 +108,7 @@ const HighPotentialProductsScreen: React.FC = () => {
 
           {/* Main Content */}
           <div className="col-span-8 bg-white shadow-md">
-            <CashewTab />
+            {verticalTabTabPotentialProducts}
           </div>
         </div>
       </div>
