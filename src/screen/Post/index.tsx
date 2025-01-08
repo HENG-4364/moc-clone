@@ -12,6 +12,7 @@ import {
 } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import CashewTab from "./Components/CashewTab";
+import { parseAsString, useQueryState } from "nuqs";
 export const highPotentialProductsVerticalTabs = [
   { id: 1, label: "គ្រាប់ស្វាយចន្ទី", value: "cashew" },
   { id: 2, label: "ដំឡូងមី", value: "cassava" },
@@ -20,26 +21,34 @@ export const highPotentialProductsVerticalTabs = [
   { id: 5, label: "ម្រេច", value: "pepper" },
 ];
 const HighPotentialProductsScreen: React.FC = () => {
-  const [horizontalTab, setHorizontalTab] = useState("all");
-  const [verticalTab, setVerticalTab] = useState("cashew");
+  // const [horizontalTab, setHorizontalTab] = useState("");
+  // const [verticalTab, setVerticalTab] = useState("cashew");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { push } = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const params = useParams<{ lang: string }>();
   const lang = params?.lang;
+  const [verticalTab, setVerticalTab] = useQueryState(
+    "verticalTab",
+    parseAsString.withDefault("cashew")
+  );
+  const [, setHorizontalTab] = useQueryState(
+    "horizontalTab",
+    parseAsString.withDefault("basicInformation")
+  );
 
   const setVertical = (verticalTab: any) => {
     const params = new URLSearchParams(searchParams.toString());
-    params.set("verticalTab", verticalTab);
-    push(`${window.location.origin}/${pathname}?${params}`);
-    setHorizontalTab("all");
-  };
-  const setHorizontal = (horizontalTab: any) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("horizontalTab", horizontalTab);
+    setVerticalTab(verticalTab);
+    setHorizontalTab(null);
     push(`${window.location.origin}/${pathname}?${params}`);
   };
+  // const setHorizontal = (horizontalTab: any) => {
+  //   const params = new URLSearchParams(searchParams.toString());
+  //   params.set("horizontalTab", horizontalTab);
+  //   push(`${window.location.origin}/${pathname}?${params}`);
+  // };
   return (
     <section className="bg-[#f6f7f8]">
       <div className="container mx-auto px-4 pb-12">

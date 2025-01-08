@@ -16,6 +16,7 @@ import { HorizontalTabPotentialProducts } from "@/types";
 import { CustomsTariffRate } from "./Components/CustomsTariffRate";
 import { MarketDemand } from "./Components/MarketDemand";
 import { StrengthsOpportunitiesAndRecommendations } from "./Components/StrengthsOpportunitiesAndRecommendations";
+import { parseAsString, useQueryState } from "nuqs";
 const newsTypes = [
   {
     id: "basicInformation",
@@ -36,40 +37,23 @@ const newsTypes = [
 ];
 
 const CashewTab: React.FC = () => {
-  const [horizontalTab, setHorizontalTab] = useState("basicInformation");
-  const [verticalTab, setVerticalTab] = useState(1);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { push } = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const params = useParams<{ lang: string }>();
   const lang = params?.lang;
+  const [horizontalTab, setHorizontalTab] = useQueryState(
+    "horizontalTab",
+    parseAsString.withDefault("basicInformation")
+  );
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 200;
-      const newScrollLeft =
-        scrollContainerRef.current.scrollLeft +
-        (direction === "left" ? -scrollAmount : scrollAmount);
-
-      scrollContainerRef.current.scrollTo({
-        left: newScrollLeft,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const setVertical = (verticalTab: any) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("verticalTab", verticalTab);
-    push(`${window.location.origin}/${pathname}?${params}`);
-    setHorizontalTab("all");
-  };
   const setHorizontal = (horizontalTab: any) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("horizontalTab", horizontalTab);
     push(`${window.location.origin}/${pathname}?${params}`);
   };
+
   let horizontalTabPotentialProducts: React.ReactNode;
 
   switch (horizontalTab) {
