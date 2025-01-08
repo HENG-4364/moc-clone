@@ -15,6 +15,7 @@ import { BasicInformation } from "./Components/BasicInformatin";
 import { HorizontalTabPotentialProducts } from "@/types";
 import { CustomsTariffRate } from "./Components/CustomsTariffRate";
 import { MarketDemand } from "./Components/MarketDemand";
+import { StrengthsOpportunitiesAndRecommendations } from "./Components/StrengthsOpportunitiesAndRecommendations";
 const newsTypes = [
   {
     id: "basicInformation",
@@ -81,11 +82,13 @@ const CashewTab: React.FC = () => {
       break;
 
     case "customsTariffRate":
-      horizontalTabPotentialProducts = <>B</>;
+      horizontalTabPotentialProducts = <CustomsTariffRate />;
       break;
 
     case "strengthsOpportunities":
-      horizontalTabPotentialProducts = <>C</>;
+      horizontalTabPotentialProducts = (
+        <StrengthsOpportunitiesAndRecommendations />
+      );
       break;
 
     default:

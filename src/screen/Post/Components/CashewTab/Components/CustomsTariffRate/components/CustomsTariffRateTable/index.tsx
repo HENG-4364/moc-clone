@@ -1,31 +1,46 @@
-import { Table } from "react-bootstrap";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 type CustomsTariffTableProps = {
   columns: string[]; // Array of strings for column headers
   data: string[][]; // 2D array of strings for table data rows
 };
 
-const CustomsTariffRateTable = ({ columns, data }: CustomsTariffTableProps) => {
+export default function CustomsTariffTable({
+  columns,
+  data,
+}: CustomsTariffTableProps) {
   return (
-    <Table hover responsive>
-      <thead className="lh-lg">
-        <tr>
-          {columns.map((col, index) => (
-            <th key={index}>{col}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody className="lh-lg">
-        {data.map((row, rowIndex) => (
-          <tr key={rowIndex}>
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex}>{cell}</td>
+    <div className="w-full overflow-auto">
+      <Table>
+        <TableHeader>
+          <TableRow className="text-lg">
+            {columns.map((col, index) => (
+              <TableHead key={index}>{col}</TableHead>
             ))}
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {data.map((row, rowIndex) => (
+            <TableRow
+              key={rowIndex}
+              className="leading-loose hover:bg-muted/50 transition-colors"
+            >
+              {row.map((cell, cellIndex) => (
+                <TableCell key={cellIndex} className="text-base">
+                  {cell}
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
-};
-
-export default CustomsTariffRateTable;
+}

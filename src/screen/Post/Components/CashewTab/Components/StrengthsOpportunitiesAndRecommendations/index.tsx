@@ -1,55 +1,67 @@
-import { Table } from "react-bootstrap";
-import style from "../../../../high_potential_products_screen.module.scss";
-
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import style from "./strengths.module.scss";
 export const StrengthsOpportunitiesAndRecommendations = () => {
   return (
-    <div className={`${style.paragraph}`}>
-      <h2 className={`lh-lg pb-2 ${style.bold_text}`}>
+    <div className="text-lg">
+      <h2 className={`mb-2 ${style.title_text}`}>
         ឃ. ការវិភាគចំណុចខ្លាំង ឱកាស និងអនុសាសន៍<sup>៤</sup>
       </h2>
 
-      <Table striped bordered responsive>
-        <thead className="text-center lh-lg">
-          <tr>
-            <th>
-              <h3 className={` ${style.bold_smaller_text}`}>ចំណុចខ្លាំង</h3>
-            </th>
-            <th>
-              <h3 className={`${style.bold_smaller_text}`}>ឱកាស</h3>
-            </th>
-          </tr>
-        </thead>
-        <tbody className="lh-lg">
-          <tr>
-            <td>
-              <li>និន្នាការនាំចេញមានការកើនឡើងជាលំដាប់</li>
-              <li>មានតម្រូវការទីផ្សារខ្ពស់ទាំងក្នុង និងក្រៅប្រទេស</li>
-              <li>អាកាសធាតុ និងកត្តាដីកម្ពុជា មានលក្ខណៈអំណោយផលដល់ការដាំដុះ</li>
-              <li>ផ្ទៃដីដាំដុះនៅមានចំនួនច្រើន</li>
-              <li>ការដាំដុះមានការកើនឡើង និងស្ទើរគ្រប់ខេត្ត</li>
-              <li>
-                ក្រសួងពាណិជ្ជកម្មកំពុងចងក្រងគោលនយោបាយជាតិស្តីពីគ្រាប់ស្វាយចន្ទី
-                ២០២២-២០២៧
-              </li>
-            </td>
-            <td>
-              <li>ទីផ្សារចិនឈរនៅលំដាប់ទី១ ក្នុងការនាំចូលពីកម្ពុជា</li>
-              <li>
-                ការនាំចេញកសិផលកម្ពុជា ភាគច្រើនទទួលបានការ អនុគ្រោះកូតា
-                និងពន្ធពីប្រទេសដៃគូ
-              </li>
-              <li>កិច្ចព្រមព្រៀងពាណិជ្ជកម្មសេរីទ្វេភាគីកម្ពុជា-ចិន</li>
-              <li>
-                ជំរុញការដាំដុះជាបណ្តុំសហគមន៍ និងប្រែក្លាយជាតំបន់កសិ-ទេសចរណ៍
-              </li>
-            </td>
-          </tr>
-        </tbody>
+      <Table className="border-collapse [&_*]:border-[#dee2e6]">
+        <TableHeader>
+          <TableRow className="bg-white">
+            <TableHead className="border p-4 text-center font-normal w-1/2">
+              <h3 className="text-lg font-bold">ចំណុចខ្លាំង</h3>
+            </TableHead>
+            <TableHead className="border p-4 text-center font-normal w-1/2">
+              <h3 className="text-lg font-bold">ឱកាស</h3>
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow className="bg-[#F2F2F2]">
+            <TableCell className="align-top border p-4 text-lg">
+              <ul className="list-disc pl-5 space-y-3">
+                <li>និន្នាការនាំចេញមានការកើនឡើងជាលំដាប់</li>
+                <li>មានតម្រូវការទីផ្សារខ្ពស់ទាំងក្នុង និងក្រៅប្រទេស</li>
+                <li>
+                  អាកាសធាតុ និងកត្តាដីកម្ពុជា មានលក្ខណៈអំណោយផលដល់ការដាំដុះ
+                </li>
+                <li>ផ្ទៃដីដាំដុះនៅមានចំនួនច្រើន</li>
+                <li>ការដាំដុះមានការកើនឡើង និងស្ទើរគ្រប់ខេត្ត</li>
+                <li>
+                  ក្រសួងពាណិជ្ជកម្មកំពុងចងក្រងគោលនយោបាយជាតិស្តីពីគ្រាប់ស្វាយចន្ទី
+                  ២០២២-២០២៧
+                </li>
+              </ul>
+            </TableCell>
+            <TableCell className="align-top border p-4 text-lg">
+              <ul className="list-disc pl-5 space-y-3">
+                <li>ទីផ្សារចិនឈរនៅលំដាប់ទី១ ក្នុងការនាំចូលពីកម្ពុជា</li>
+                <li>
+                  ការនាំចេញកសិផលកម្ពុជា ភាគច្រើនទទួលបានការ អនុគ្រោះកូតា
+                  និងពន្ធពីប្រទេសដៃគូ
+                </li>
+                <li>កិច្ចព្រមព្រៀងពាណិជ្ជកម្មសេរីទ្វេភាគីកម្ពុជា-ចិន</li>
+                <li>
+                  ជំរុញការដាំដុះជាបណ្តុំសហគមន៍ និងប្រែក្លាយជាតំបន់កសិ-ទេសចរណ៍
+                </li>
+              </ul>
+            </TableCell>
+          </TableRow>
+        </TableBody>
       </Table>
 
-      <h3 className={` lh-lg pt-2 ${style.bold_smaller_text}`}>អនុសាសន៍</h3>
+      <h3 className={`text-base leading-loose pt-2 ${style.font_Moul}`}>អនុសាសន៍</h3>
 
-      <ul className="lh-lg">
+      <ul className="list-disc pl-5 space-y-2">
         <li>ជំរុញការអនុវត្តគោលនយោបាយអភិវឌ្ឍន៍កសិកម្ម ២០១៩-២០២៣</li>
         <li>បង្កើនការចរចា SPS ជាមួយប្រទេសនាំចូល</li>
         <li>ពង្រឹងវិធានការនានា ដើម្បីសម្រួលពាណិជ្ជកម្ម និងជំរុញការនាំចេញ</li>
@@ -72,15 +84,17 @@ export const StrengthsOpportunitiesAndRecommendations = () => {
         </li>
         <li>ជំរុញការផ្សព្វផ្សាយពាណិជ្ជកម្ម។</li>
       </ul>
-      <hr />
-      <div className="lh-lg">
+      <hr className="my-4" />
+      <div className="leading-loose">
         <p>
           <strong>ប្រភព៖</strong>
         </p>
-        <sup>៤</sup>
-        ក្រសួងពាណិជ្ជកម្ម (២០២៣)
-        ផែនការយុទ្ធសាស្ត្រទាញយកប្រយោជន៍ជាអតិបរិមាពីការអនុវត្តកិច្ចព្រមព្រៀងពាណិជ្ជកម្មសេរី,
-        ទំព័រ ៨៤-៨៥ <br />
+        <p>
+          <sup>៤</sup>
+          ក្រសួងពាណិជ្ជកម្ម (២០២៣)
+          ផែនការយុទ្ធសាស្ត្រទាញយកប្រយោជន៍ជាអតិបរិមាពីការអនុវត្តកិច្ចព្រមព្រៀងពាណិជ្ជកម្មសេរី,
+          ទំព័រ ៨៤-៨៥
+        </p>
       </div>
     </div>
   );

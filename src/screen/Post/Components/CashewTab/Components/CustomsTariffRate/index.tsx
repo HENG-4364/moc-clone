@@ -104,7 +104,7 @@ export const CustomsTariffRate = () => {
 
   return (
     <div className={`${style.paragraph}`}>
-      <h2 className={`lh-lg ${style.bold_text}`}>គ. អត្រាពន្ធគយ</h2>
+      <h2 className={` ${style.bold_text}`}>គ. អត្រាពន្ធគយ</h2>
 
       <p className={`pt-2`} style={{ textIndent: "50px" }}>
         តារាងពន្ធគយក្រោមកិច្ចព្រមព្រៀងតំបន់ និងទ្វេភាគី<sup>៣</sup>៖
@@ -112,13 +112,13 @@ export const CustomsTariffRate = () => {
 
       {tableData.map((table, index) => (
         <div key={index}>
-          <h3 className={`lh-lg ${style.bold_smaller_text}`}>{table.title}</h3>
+          <h3 className={`${style.bold_smaller_text}`}>{table.title}</h3>
           <CustomsTariffRateTable columns={table.headers} data={table.data} />
         </div>
       ))}
 
       {/* <hr /> */}
-      <div className="lh-lg">
+      <div className="">
         <p>
           <strong>ប្រភព៖</strong>
         </p>

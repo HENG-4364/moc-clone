@@ -32,11 +32,6 @@ const MarketDemandBarEChart = (props: MarketDemandBarEChartProps) => {
         colors: ["transparent"],
       },
       xaxis: props?.xaxis,
-      // yaxis: {
-      //   title: {
-      //     text: "គិតជាពាន់ដុល្លារ",
-      //   },
-      // },
       fill: {
         opacity: 1,
       },

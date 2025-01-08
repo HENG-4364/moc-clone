@@ -11,9 +11,7 @@ import style from "./market-demand.module.scss";
 export const MarketDemand = () => {
   return (
     <div className="text-lg">
-      <h2 className={`mb-2 ${style.title_text}`}>
-        ខ. តម្រូវការទីផ្សារ
-      </h2>
+      <h2 className={`mb-2 ${style.title_text}`}>ខ. តម្រូវការទីផ្សារ</h2>
       <p className="ml-4 leading-loose">
         ទិន្នន័យនៃការនាំចូលគ្រាប់ស្វាយចន្ទីមានសំបកលើទីផ្សារពិភពលោក
         និងប្រទេសនាំចូលធំៗ<sup>២</sup>៖
@@ -75,7 +73,7 @@ export const MarketDemand = () => {
           ))}
         </TableBody>
       </Table>{" "}
-      {/* <MarketDemandBarEChart
+      <MarketDemandBarEChart
         series={[
           {
             name: "2023",
@@ -107,7 +105,7 @@ export const MarketDemand = () => {
             "អាល់ហ្សេរី",
           ],
         }}
-      /> */}
+      />
       <p className="leading-loose pt-2">
         ទិន្នន័យនៃការនាំចូលគ្រាប់ស្វាយចន្ទីបកសំបកលើទីផ្សារពិភពលោក
         និងប្រទេសនាំចូលធំៗ៖
@@ -183,7 +181,7 @@ export const MarketDemand = () => {
           ))}
         </TableBody>
       </Table>
-      {/* <MarketDemandBarEChart
+      <MarketDemandBarEChart
         series={[
           {
             name: "2023",
@@ -235,7 +233,7 @@ export const MarketDemand = () => {
             "អេស្បាញ",
           ],
         }}
-      /> */}
+      />
       <hr className="my-6" />
       <div className="leading-loose">
         <p>
