@@ -66,12 +66,12 @@ const Navbar = () => {
                         : "/Flag_of_the_United_Kingdom.png"
                     }`}
                     alt="MoC Flag Change Language"
-                    className="w-[25px] pt-1 "
+                    className="w-[30px] pt-1 "
                   />
                 </div>
               </div>
               <div>
-                <Search size={23} color="white" />
+                <Search size={26} color="white" />
               </div>
               <div>
                 <Sheet>

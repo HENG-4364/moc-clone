@@ -67,7 +67,7 @@ export default function MobileNav() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Menu size={23} color="white" />
+        <Menu size={26} color="white" />
       </SheetTrigger>
       <SheetContent side="left" className="">
         <SheetHeader>

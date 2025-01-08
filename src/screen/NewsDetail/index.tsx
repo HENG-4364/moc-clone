@@ -37,16 +37,16 @@ function NewsDetailScreen() {
     <>
       <section className="pt-4 lg:pt-10 ">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-12 gap-9">
-            <div className="w-full  col-span-12 lg:col-span-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-9">
+            <div className="w-full  col-span-1 lg:col-span-8">
               <div className="blog-details-desc">
-                <div className="text-2xl md:text-[1.7rem] lg:text-[2rem] font-bold mt-5 mobile-title-detail leading-9 lg:leading-[1.5] mb-3">
+                <div className="text-xl sm:text-2xl md:text-[1.7rem] lg:text-[2rem] font-bold mt-5 mobile-title-detail leading-9 md:leading-[1.5] lg:leading-[1.5] mb-3">
                   រូបភាពខ្លះៗពីការចូលទស្សនាពន្លាជាតិកម្ពុជា
                   នៅក្នុងពិព័រណ៍ទំនិញនាំចូលអន្តរជាតិចិន លើកទី៧ នៅទីក្រុងសៀងហៃ
                   សាធារណរដ្ឋប្រជាមានិតចិន នាថ្ងៃទី៧ ខែវិច្ឆិកា ឆ្នាំ២០២៤
                 </div>
-                <div className="flex flex-wrap items-center text-sm md:text-base text-gray-600">
-                  <Calendar className="" size={20} />
+                <div className="flex flex-wrap items-center text-xs sm:text-sm md:text-base text-gray-600">
+                  <Calendar className="w-5 h-5"  />
                   <span className="ml-2">
                     ថ្ងៃផ្សព្វផ្សាយ: <strong>០៧-វិច្ឆិកា-២០២៤</strong>
                   </span>
@@ -110,7 +110,7 @@ function NewsDetailScreen() {
                 </div>
               </div>
             </div>
-            <div className="w-full  col-span-12 lg:col-span-4">
+            <div className="w-full  col-span-1 lg:col-span-4">
               <NewsDetailSidebar />
             </div>
           </div>
