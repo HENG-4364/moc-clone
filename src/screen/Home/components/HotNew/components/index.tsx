@@ -1,17 +1,14 @@
 "use client";
 
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
-import { Bell, Globe, Lock } from "lucide-react";
-import { useEffect, useState } from "react";
-import style from "./swiper.module.scss";
+import { Bell, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-
-// Import Swiper styles
+import style from "./swiper.module.scss";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Title } from "@/components/Title/Title";
 
 const slides = [
   {
@@ -22,8 +19,7 @@ const slides = [
   },
   {
     id: 2,
-    content:
-      "សេចក្តីជូនដំណឹងស្តីពីការបិទសេវាកម្មក្នុងថ្ងៃឈប់សម្រាក",
+    content: "សេចក្តីជូនដំណឹងស្តីពីការបិទសេវាកម្មក្នុងថ្ងៃឈប់សម្រាក",
     date: "២០២៤-០១-១៤",
   },
   {
@@ -41,8 +37,8 @@ const slides = [
 
 export default function AnnouncementSwiper() {
   const [mounted, setMounted] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // Prevent hydration issues with Swiper
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -50,60 +46,82 @@ export default function AnnouncementSwiper() {
   if (!mounted) return null;
 
   return (
-      <div className="w-full mx-auto">
-        <div className={` ${style.sliderWrapper}`}>
-          <Swiper
-            spaceBetween={30}
-            pagination={{
-              clickable: true,
-            }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            slidesPerView={1}
-            modules={[Autoplay, Pagination]}
-            className="mySwiper"
-            style={{ paddingBottom: "50px" }}
-          >
-            {slides.map((slide) => (
+    <div className="w-full  mx-auto">
+      <div className={` ${style.sliderWrapper}`}>
+        <Swiper
+          // spaceBetween={30}
+          // pagination={{
+          //   clickable: true,
+          //   bulletActiveClass: "bg-blue-600 !opacity-100",
+          //   bulletClass: "swiper-pagination-bullet !bg-blue-300 !w-2 !h-2 !mx-1",
+          // }}
+          // autoplay={{
+          //   delay: 5000,
+          //   disableOnInteraction: false,
+          // }}
+          // slidesPerView={1}
+          // modules={[Autoplay, Pagination]}
+          // className="mySwiper"
+          // onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          slidesPerView={1}
+          modules={[Autoplay, Pagination]}
+          className="mySwiper"
+          style={{ paddingBottom: "50px" }}
+        >
+          <AnimatePresence mode="wait">
+            {slides.map((slide, index) => (
               <SwiperSlide key={slide.id}>
-                <Card className="bg-[#2980b9] text-white border-none">
-                  <div className="flex items-center gap-4 p-4">
-                    <div className="flex-shrink-0 ">
-                      <Bell
-                        className="w-10 h-10 "
-                        style={{
-                          border: "2px dotted white",
-                          borderRadius: "100%",
-                          padding: "5px",
-                        }}
-                      />
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Card className="bg-gradient-to-r from-[#2980B9] to-[#57a0d0] text-white p-6 shadow-lg">
+                    <div className="flex items-start gap-4">
+                      <div className="bg-white p-3 rounded-full">
+                        <Bell className="h-6 w-6 text-[#2980B9]" />
+                      </div>
+                      <div className="space-y-3 flex-1">
+                        <p
+                          className="text-lg font-medium"
+                          style={{
+                            fontFamily: "Khmer OS Siemreap, Arial, sans-serif",
+                          }}
+                        >
+                          {slide.content}
+                        </p>
+                        <div className="flex justify-between items-center">
+                          <span
+                            className="text-sm bg-white text-[#2980B9] px-3 py-1 rounded-full"
+                            style={{
+                              fontFamily:
+                                "Khmer OS Siemreap, Arial, sans-serif",
+                            }}
+                          >
+                            {slide.date}
+                          </span>
+                          <button className="text-sm flex items-center hover:underline">
+                            អានបន្ថែម <ChevronRight className="h-4 w-4 ml-1" />
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex-grow">
-                      <p
-                        className="text-base md:text-lg"
-                        style={{
-                          fontFamily: "Khmer OS Siemreap, Arial, sans-serif",
-                        }}
-                      >
-                        {slide?.content}
-                      </p>
-                      <p
-                        className="text-sm opacity-80 mt-1"
-                        style={{
-                          fontFamily: "Khmer OS Siemreap, Arial, sans-serif",
-                        }}
-                      >
-                        {slide?.date}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
+                  </Card>
+                </motion.div>
               </SwiperSlide>
             ))}
-          </Swiper>
-        </div>
+          </AnimatePresence>
+        </Swiper>
       </div>
+    </div>
   );
 }

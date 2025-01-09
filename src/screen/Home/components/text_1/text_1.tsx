@@ -13,47 +13,47 @@ import {
 } from "lucide-react";
 import style from "./text.module.scss";
 import Image from "next/image";
-export function HeroSection() {
+export function HeroSection_1() {
   return (
-    <section className="relative min-h-[600px] overflow-hidden hidden lg:block">
+    <section className="relative min-h-[300px] overflow-hidden">
       {/* <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white overflow-hidden "> */}
-        {/* Floating Particles */}
-        <div className="absolute inset-0 z-20">
-          {[...Array(5)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute"
+      {/* Floating Particles */}
+      <div className="absolute inset-0 z-20">
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{
+              left: Math.random() * 100 + "%",
+              top: Math.random() * 100 + "%",
+              animation: `float ${Math.random() * 3 + 2}s linear infinite`,
+              animationDelay: `${Math.random() * 2}s`,
+            }}
+          >
+            <Image
+              src="/flower-bg-loading.png"
+              alt="floating-logo"
+              width={40}
+              height={40}
+              className="w-auto h-auto opacity-20 select-none"
               style={{
-                left: Math.random() * 100 + "%",
-                top: Math.random() * 100 + "%",
-                animation: `float ${Math.random() * 3 + 2}s linear infinite`,
-                animationDelay: `${Math.random() * 2}s`,
+                width: Math.random() * 30 + 25 + "px",
+                height: "auto",
               }}
-            >
-              <Image
-                src="/flower-bg-loading.png"
-                alt="floating-logo"
-                width={40}
-                height={40}
-                className="w-auto h-auto opacity-20 select-none"
-                style={{
-                  width: Math.random() * 30 + 25 + "px",
-                  height: "auto",
-                }}
-                priority
-              />
-            </div>
-          ))}
-        </div>
+              priority
+            />
+          </div>
+        ))}
+      </div>
       {/* </div> */}
       {/* Background Image and Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/ministry-of-commerece.jpg"
+          src="/bc-homepage.png"
           alt="Background"
           className="h-full w-full object-cover brightness-50"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#297fb9ec] to-[#2677ad9d]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#297fb9b1] to-[#ffffff6b]" />
       </div>
 
       {/* Content */}
@@ -94,7 +94,7 @@ export function HeroSection() {
           className="text-white order-1 lg:order-2"
         >
           <img
-            src="/banner-white.png"
+            src="/banner_1.png"
             alt="Background"
             className="h-full w-full object-contain "
           />

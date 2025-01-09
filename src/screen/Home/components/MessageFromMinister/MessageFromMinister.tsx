@@ -22,7 +22,7 @@ export function MessageFromMinister({
 
   return (
     <div
-      className="w-full py-[20px] md:py-[50px] lg:py-[60px]"
+      className=" lg:hidden w-full py-[20px] md:py-[50px] lg:py-[60px]"
       style={{
         background: `url(${bgImage}) no-repeat`,
         backgroundSize: "cover",
