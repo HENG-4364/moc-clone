@@ -59,7 +59,7 @@ const HighPotentialProductsScreen = ({dict}:any) => {
       break;
 
     case "cassava":
-      verticalTabTabPotentialProducts = <CassavaTab/>;
+      verticalTabTabPotentialProducts = <CassavaTab dict={dict}/>;
       break;
 
     case "pailinLongan":
