@@ -72,7 +72,9 @@ const PailinLonganTab = ({ dict }: any) => {
       break;
 
     case "strengthsOpportunities":
-      horizontalTabPotentialProducts = <StrengthsOpportunitiesAndRecommendations dict={dict}/>;
+      horizontalTabPotentialProducts = (
+        <StrengthsOpportunitiesAndRecommendations dict={dict} />
+      );
       break;
 
     default:
@@ -86,7 +88,7 @@ const PailinLonganTab = ({ dict }: any) => {
       <div className="w-full shadow-sm">
         <div
           ref={scrollContainerRef}
-          className="flex justify-between p-2 scrollbar-hide rounded-md w-full"
+          className="hidden lg:flex justify-between p-2 scrollbar-hide rounded-md w-full"
         >
           {newsTypes.map((type) => (
             <button
@@ -108,6 +110,36 @@ const PailinLonganTab = ({ dict }: any) => {
               {type.label}
             </button>
           ))}
+        </div>
+        <div className="lg:hidden px-3">
+          <div className="relative ">
+            <div
+              ref={scrollContainerRef}
+              className="flex overflow-x-auto whitespace-nowrap  p-2 space-x-4 scrollbar-hide rounded-md"
+              style={{}}
+            >
+              {newsTypes.map((type) => (
+                <button
+                  key={type.id}
+                  className={cn(
+                    "px-4 py-2 rounded-md transition-all duration-200 font-semibold text-[15px] xl:text-[16px]",
+                    "hover:bg-gray-50",
+                    "relative",
+                    "after:absolute after:bottom-0 after:left-0 after:right-0",
+                    "after:h-[2px] after:rounded-full",
+                    horizontalTab === type.id
+                      ? "after:bg-gradient-to-r after:from-[#2980B9] after:to-[#21638f]"
+                      : "after:bg-transparent"
+                  )}
+                  onClick={() => (
+                    setHorizontalTab(type.id), setHorizontal(type.id)
+                  )}
+                >
+                  {type.label}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       <div className="p-5">{horizontalTabPotentialProducts}</div>
