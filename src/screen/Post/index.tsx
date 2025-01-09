@@ -15,6 +15,7 @@ import CashewTab from "./Components/CashewTab";
 import { parseAsString, useQueryState } from "nuqs";
 import RiceTab from "./Components/Ricetab";
 import CassavaTab from "./Components/CassavaTab";
+import PailinLonganTab from "./Components/PailinLonganTab";
 export const highPotentialProductsVerticalTabs = [
   { id: 1, label: "គ្រាប់ស្វាយចន្ទី", value: "cashew" },
   { id: 2, label: "ដំឡូងមី", value: "cassava" },
@@ -22,7 +23,7 @@ export const highPotentialProductsVerticalTabs = [
   { id: 4, label: "ស្រូវ អង្ករ", value: "rice" },
   { id: 5, label: "ម្រេច", value: "pepper" },
 ];
-const HighPotentialProductsScreen = ({dict}:any) => {
+const HighPotentialProductsScreen = ({ dict }: any) => {
   // const [horizontalTab, setHorizontalTab] = useState("");
   // const [verticalTab, setVerticalTab] = useState("cashew");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -59,14 +60,14 @@ const HighPotentialProductsScreen = ({dict}:any) => {
       break;
 
     case "cassava":
-      verticalTabTabPotentialProducts = <CassavaTab dict={dict}/>;
+      verticalTabTabPotentialProducts = <CassavaTab dict={dict} />;
       break;
 
     case "pailinLongan":
-      verticalTabTabPotentialProducts = <></>;
+      verticalTabTabPotentialProducts = <PailinLonganTab dict={dict} />;
       break;
     case "rice":
-      verticalTabTabPotentialProducts = <RiceTab dict={dict}/>;
+      verticalTabTabPotentialProducts = <RiceTab dict={dict} />;
       break;
 
     case "pepper":
