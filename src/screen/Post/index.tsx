@@ -16,6 +16,7 @@ import { parseAsString, useQueryState } from "nuqs";
 import RiceTab from "./Components/Ricetab";
 import CassavaTab from "./Components/CassavaTab";
 import PailinLonganTab from "./Components/PailinLonganTab";
+import PepperTab from "./Components/PepperTab";
 export const highPotentialProductsVerticalTabs = [
   { id: 1, label: "គ្រាប់ស្វាយចន្ទី", value: "cashew" },
   { id: 2, label: "ដំឡូងមី", value: "cassava" },
@@ -71,7 +72,7 @@ const HighPotentialProductsScreen = ({ dict }: any) => {
       break;
 
     case "pepper":
-      verticalTabTabPotentialProducts = <></>;
+      verticalTabTabPotentialProducts = <PepperTab dict={dict} />;
       break;
 
     default:
