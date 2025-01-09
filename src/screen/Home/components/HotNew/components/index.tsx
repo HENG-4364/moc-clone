@@ -92,7 +92,7 @@ export default function AnnouncementSwiper() {
                       </div>
                       <div className="space-y-3 flex-1">
                         <p
-                          className="text-lg font-medium"
+                          className="text-lg font-medium line-clamp-2 leading-8"
                           style={{
                             fontFamily: "Khmer OS Siemreap, Arial, sans-serif",
                           }}
