@@ -321,52 +321,10 @@ export function OfficialDocumentScreen() {
           {/* Header */}
           <div className="text-center mb-3">
             <Title title={"ឯកសារផ្លូវការ"} />
-
-            {/* Stats */}
-            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
-            {stats.map((stat) => {
-              const Icon = stat.icon;
-              return (
-                <Card key={stat.label}>
-                  <CardContent className="flex items-center gap-4 p-4">
-                    <div className={`${stat.color}`}>
-                      <Icon className="w-8 h-8" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">
-                        {stat.label}
-                      </p>
-                      <p className="text-2xl font-bold">{stat.value}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div> */}
-
-            {/* Search */}
             <DocumentSearch />
           </div>
 
-          {/* <div className="mb-12">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-semibold">ឯកសារថ្មីៗ</h2>
-              <DocumentFilters />
-            </div>
-            <FeaturedDocuments />
-          </div> */}
           <div className="relative">
-            {/* Left Arrow */}
-            {/* {showLeftArrow && (
-            <button
-              onClick={() => scroll("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-full rounded-l-lg bg-gray-200"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-          )} */}
-
-            {/* Scrollable Area */}
             <div
               ref={scrollContainerRef}
               className="flex overflow-x-auto whitespace-nowrap  p-2 space-x-4 scrollbar-hide rounded-md"
@@ -388,16 +346,6 @@ export function OfficialDocumentScreen() {
                 </button>
               ))}
             </div>
-
-            {/* Right Arrow */}
-            {/* {showRightArrow && (
-            <button
-              onClick={() => scroll("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-full rounded-r-lg bg-gray-200"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
-          )} */}
           </div>
 
           <div className="flex justify-end gap-2 mt-2 mb-5">
@@ -426,6 +374,7 @@ export function OfficialDocumentScreen() {
               />
             </button>
           </div>
+          
           {activeCategory === "all" && (
             <>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
