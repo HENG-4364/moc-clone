@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from "react";
 import CashewTab from "./Components/CashewTab";
 import { parseAsString, useQueryState } from "nuqs";
 import RiceTab from "./Components/Ricetab";
+import CassavaTab from "./Components/CassavaTab";
 export const highPotentialProductsVerticalTabs = [
   { id: 1, label: "គ្រាប់ស្វាយចន្ទី", value: "cashew" },
   { id: 2, label: "ដំឡូងមី", value: "cassava" },
@@ -58,7 +59,7 @@ const HighPotentialProductsScreen = ({dict}:any) => {
       break;
 
     case "cassava":
-      verticalTabTabPotentialProducts = <></>;
+      verticalTabTabPotentialProducts = <CassavaTab/>;
       break;
 
     case "pailinLongan":
