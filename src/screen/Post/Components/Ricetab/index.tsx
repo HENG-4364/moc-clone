@@ -13,6 +13,12 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import { parseAsString, useQueryState } from "nuqs";
+import {
+  BasicInformation,
+  CustomsTariffRate,
+  MarketDemand,
+  StrengthsOpportunitiesAndRecommendations,
+} from "./Components";
 const newsTypes = [
   {
     id: "basicInformation",
@@ -32,7 +38,7 @@ const newsTypes = [
   },
 ];
 
-const RiceTab: React.FC = () => {
+const RiceTab = ({ dict }: any) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { push } = useRouter();
   const searchParams = useSearchParams();
@@ -54,23 +60,25 @@ const RiceTab: React.FC = () => {
 
   switch (horizontalTab) {
     case "basicInformation":
-      horizontalTabPotentialProducts = <></>;
+      horizontalTabPotentialProducts = <BasicInformation dict={dict} />;
       break;
 
     case "marketDemand":
-      horizontalTabPotentialProducts = <></>;
+      horizontalTabPotentialProducts = <MarketDemand dict={dict} />;
       break;
 
     case "customsTariffRate":
-      horizontalTabPotentialProducts = <></>;
+      horizontalTabPotentialProducts = <CustomsTariffRate dict={dict} />;
       break;
 
     case "strengthsOpportunities":
-      horizontalTabPotentialProducts = <></>;
+      horizontalTabPotentialProducts = (
+        <StrengthsOpportunitiesAndRecommendations dict={dict} />
+      );
       break;
 
     default:
-      horizontalTabPotentialProducts = <></>;
+      horizontalTabPotentialProducts = <BasicInformation />;
       break;
   }
 

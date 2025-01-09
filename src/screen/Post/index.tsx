@@ -21,7 +21,7 @@ export const highPotentialProductsVerticalTabs = [
   { id: 4, label: "ស្រូវ អង្ករ", value: "rice" },
   { id: 5, label: "ម្រេច", value: "pepper" },
 ];
-const HighPotentialProductsScreen: React.FC = () => {
+const HighPotentialProductsScreen = ({dict}:any) => {
   // const [horizontalTab, setHorizontalTab] = useState("");
   // const [verticalTab, setVerticalTab] = useState("cashew");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -65,7 +65,7 @@ const HighPotentialProductsScreen: React.FC = () => {
       verticalTabTabPotentialProducts = <></>;
       break;
     case "rice":
-      verticalTabTabPotentialProducts = <RiceTab />;
+      verticalTabTabPotentialProducts = <RiceTab dict={dict}/>;
       break;
 
     case "pepper":
