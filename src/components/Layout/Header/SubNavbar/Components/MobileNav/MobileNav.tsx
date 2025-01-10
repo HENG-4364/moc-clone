@@ -155,14 +155,16 @@ export default function MobileNav() {
             <AccordionContent>
               <nav className="flex flex-col space-y-2">
                 <Link
-                  href="#"
+                  href="https://www.businessregistration.moc.gov.kh"
+                  target="_blank"
                   className="px-4 py-2 text-base hover:font-semibold hover:bg-accent hover:px-5 rounded-md transition-all duration-300 cursor-pointer"
                   onClick={handleLinkClick}
                 >
                   ការចុះឈ្មោះក្រុមហ៊ុន
                 </Link>
                 <Link
-                  href="#"
+                  href="https://www.cambodiaip.gov.kh/default.aspx?lang=en"
+                  target="_blank"
                   className="px-4 py-2 text-base hover:font-semibold hover:bg-accent hover:px-5 rounded-md transition-all duration-300 cursor-pointer"
                   onClick={handleLinkClick}
                 >
@@ -192,10 +194,11 @@ export default function MobileNav() {
               ))}
             </AccordionContent>
           </AccordionItem>
-          <div  onClick={() => (router.push("/news"), setOpen(false))} className="py-2 text-lg hover:font-semibold hover:bg-accent hover:px-2 rounded-md transition-all duration-300 cursor-pointer">
-            <Link href="/news" >
-              ព័ត៌មាន
-            </Link>
+          <div
+            onClick={() => (router.push("/news"), setOpen(false))}
+            className="py-2 text-lg hover:font-semibold hover:bg-accent hover:px-2 rounded-md transition-all duration-300 cursor-pointer"
+          >
+            <Link href="/news">ព័ត៌មាន</Link>
           </div>
         </Accordion>
 

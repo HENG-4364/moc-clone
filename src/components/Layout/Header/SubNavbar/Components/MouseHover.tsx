@@ -13,9 +13,14 @@ interface SubMenuItem {
 interface SubMenuHoverProp {
   data?: SubMenuItem[];
   menuName: string;
+  target?: string;
 }
 
-const SubMenuHover: React.FC<SubMenuHoverProp> = ({ data = [], menuName }) => {
+const SubMenuHover: React.FC<SubMenuHoverProp> = ({
+  data = [],
+  menuName,
+  target,
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -56,7 +61,9 @@ const SubMenuHover: React.FC<SubMenuHoverProp> = ({ data = [], menuName }) => {
       <NavigationMenuTrigger
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={`text-base md:text-[16px] font-semibold ${isScrolled ? "text-white" : ""}`}
+        className={`text-base md:text-[16px] font-semibold ${
+          isScrolled ? "text-white" : ""
+        }`}
       >
         {menuName}
       </NavigationMenuTrigger>
@@ -74,9 +81,10 @@ const SubMenuHover: React.FC<SubMenuHoverProp> = ({ data = [], menuName }) => {
                 <Link
                   key={item.title}
                   href={item.href}
+                  target={target}
                   className="block select-none space-y-1 rounded-md p-2  leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                 >
-                  <div >{item.title}</div>
+                  <div>{item.title}</div>
                 </Link>
               ))}
             </div>
@@ -88,4 +96,3 @@ const SubMenuHover: React.FC<SubMenuHoverProp> = ({ data = [], menuName }) => {
 };
 
 export default SubMenuHover;
-
