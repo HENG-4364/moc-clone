@@ -70,7 +70,7 @@ const Navbar = () => {
                   />
                 </div>
               </div>
-              <div>
+              <div onClick={()=>router.push("/search")}>
                 <Search size={26} color="white" />
               </div>
               <div>
