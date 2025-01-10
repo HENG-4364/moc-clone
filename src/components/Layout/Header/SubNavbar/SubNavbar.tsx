@@ -84,7 +84,7 @@ const business_services: {
   },
   {
     title: "ការចុះឈ្មោះម៉ាកពាណិជ្ជកម្ម",
-    href: "https://www.cambodiaip.gov.kh/default.aspx?lang=en",
+    href: "https://www.cambodiaip.gov.kh",
     description:
       "For sighted users to preview content available behind a link.",
   },
