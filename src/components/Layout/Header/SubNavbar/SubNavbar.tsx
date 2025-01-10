@@ -204,7 +204,6 @@ export function SubNavbar() {
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-                
               </NavigationMenuList>
             </NavigationMenu>
           </div>
@@ -213,7 +212,7 @@ export function SubNavbar() {
               isScrolled ? "text-white" : ""
             }`}
           >
-            <div>
+            <div onClick={() => router.push("/search")}>
               <Search size={20} />
             </div>
             <svg

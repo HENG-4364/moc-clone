@@ -24,7 +24,7 @@ const Footer = () => {
           className="hidden sm:flex w-full"
         />
       </div>
-      <div className="bg-white py-12">
+      <div className="bg-[#F6F7F8] py-12">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             {/* Logo and Description */}

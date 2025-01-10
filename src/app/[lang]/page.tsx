@@ -2,9 +2,9 @@ import { Title } from "@/components/Title/Title";
 import HomeScreen from "@/screen/Home/HomeScreen";
 import { Metadata } from "next";
 import { getDictionaryByFolder } from "./dictionaries";
-
-export default async function Home({ params }: { params: any }) {
-  const { lang } = params;
+type Params = Promise<{ lang: string }>;
+export default async function Home({ params }: { params: Params }) {
+  const { lang } = await params;
   const dict = await getDictionaryByFolder(lang, "home");
   return (
     <>
@@ -15,9 +15,9 @@ export default async function Home({ params }: { params: any }) {
 export async function generateMetadata({
   params,
 }: {
-  params: any;
+  params: Params;
 }): Promise<Metadata> {
-  const { lang } = params;
+  const { lang } = await params;
   const dict = await getDictionaryByFolder(lang, "home");
   return {
     title: dict?.head_title,
