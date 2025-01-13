@@ -2,11 +2,7 @@
 import React from "react";
 import NewsDetailScreen from "@/screen/NewsDetail";
 
-
-
-
-async function NewsDetail({ params }: any) {
-  const { lang } = params;
+async function NewsDetail() {
   return <NewsDetailScreen />;
 }
 
