@@ -22,6 +22,7 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Title } from "@/components/Title/Title";
 
 interface Product {
   id: string;
@@ -77,11 +78,8 @@ export default function CommodityValuesScreen() {
     setTab(tab);
   };
   return (
-    <div className="container mx-auto p-6 max-w-7xl">
-      <h1 className="text-2xl font-bold text-center mb-8">
-        សន្និធិនៃទិន្នប័យចាស់
-      </h1>
-
+    <div className="container mx-auto p-6">
+      <Title title={"សន្ទស្សន៍ថ្លៃទំនិញប្រចាំថ្ងៃ"} />
       <div className="grid gap-6 md:grid-cols-[300px,1fr,1fr] mb-8">
         <div>
           <label className="block text-sm mb-2">ថ្ងៃខែឆ្នាំ</label>
