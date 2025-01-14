@@ -21,6 +21,7 @@ import {
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface Product {
   id: string;
@@ -28,12 +29,14 @@ interface Product {
 }
 
 export default function CommodityValuesScreen() {
+  const searchParams = useSearchParams();
+  const tabQuery = searchParams.get("q");
   const [date, setDate] = useState<Date>(new Date("2025-01-01"));
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<Product[]>([]);
-  const [activeView, setActiveView] = useState("chart");
+  const [tab, setTab] = useState(tabQuery ? tabQuery : "bar");
+  const router = useRouter();
 
-  // Simulated product data
   const productList: Product[] = [
     { id: "1", name: "Product A" },
     { id: "2", name: "Product B" },
@@ -69,7 +72,10 @@ export default function CommodityValuesScreen() {
       selected.map((item) => ({ id: item.value, name: item.label }))
     );
   };
-
+  const onChangeTab = (tab: string) => {
+    router.push(`/commodity-values?q=${tab}`);
+    setTab(tab);
+  };
   return (
     <div className="container mx-auto p-6 max-w-7xl">
       <h1 className="text-2xl font-bold text-center mb-8">
@@ -137,54 +143,100 @@ export default function CommodityValuesScreen() {
           />
         </div>
       </div>
+      <div className="flex gap-3">
+        <div
+          className={cn(
+            "bg-gray-50 p-2 rounded-md border-2 border-[#2980B9] hover:bg-[#2980B9] text-[#2980B9] hover:text-white cursor-pointer",
+            tab === "bar" ? "bg-[#2980B9] text-white" : ""
+          )}
+          onClick={() => onChangeTab("bar")}
+        >
+          <BarChart3 className="h-5 w-5" />
+        </div>
 
-      <Tabs value={activeView} onValueChange={setActiveView} className="mb-8">
-        <TabsList>
-          <TabsTrigger value="chart" >
-            <BarChart3 className="h-6 w-6 mr-2 " />
-            {/* តារាង */}
-          </TabsTrigger>
-          <TabsTrigger value="line">
-            <LineChart className="h-6 w-6 mr-2" />
-            {/* ខ្សែកោង */}
-          </TabsTrigger>
-          <TabsTrigger value="grid">
-            <LayoutGrid className="h-6 w-6 mr-2" />
-            {/* ក្រឡា */}
-          </TabsTrigger>
-        </TabsList>
+        <div
+          className={cn(
+            "bg-gray-50 p-2 rounded-md border-2 border-[#2980B9] hover:bg-[#2980B9] text-[#2980B9] hover:text-white cursor-pointer",
+            tab === "line" ? "bg-[#2980B9] text-white" : ""
+          )}
+          onClick={() => onChangeTab("line")}
+        >
+          <LineChart className="h-5 w-5" />
+        </div>
 
-        <TabsContent value="chart" className="mt-4">
-          <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
-            <div className="col-span-1 lg:col-span-3 flex flex-col items-center justify-center py-16">
-              <div className="w-50 h-50 mb-2">
-                <Image
-                  src="/no-data.svg"
-                  alt="No results found"
-                  width={128}
-                  height={128}
-                  className="w-full h-full"
-                />
+        <div
+          className={cn(
+            "bg-gray-50 p-2 rounded-md border-2 border-[#2980B9] hover:bg-[#2980B9] text-[#2980B9] hover:text-white cursor-pointer",
+            tab === "table" ? "bg-[#2980B9] text-white" : ""
+          )}
+          onClick={() => onChangeTab("table")}
+        >
+          <LayoutGrid className="h-5 w-5" />
+        </div>
+      </div>
+
+      <div className="mt-4">
+        {tab === "bar" && (
+          <div className="mt-4">
+            <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
+              <div className="col-span-1 lg:col-span-3 flex flex-col items-center justify-center py-16">
+                <div className="w-50 h-50 mb-2">
+                  <Image
+                    src="/no-data.svg"
+                    alt="No results found"
+                    width={128}
+                    height={128}
+                    className="w-full h-full"
+                  />
+                </div>
+                <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                  គ្មានទិន្នន័យ Bar
+                </h2>
               </div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                គ្មានទិន្នន័យ
-              </h2>
             </div>
           </div>
-        </TabsContent>
-
-        <TabsContent value="line">
-          <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
-            <p>គ្មានទិន្នន័យ</p>
+        )}
+        {tab === "line" && (
+          <div className="mt-4">
+            <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
+              <div className="col-span-1 lg:col-span-3 flex flex-col items-center justify-center py-16">
+                <div className="w-50 h-50 mb-2">
+                  <Image
+                    src="/no-data.svg"
+                    alt="No results found"
+                    width={128}
+                    height={128}
+                    className="w-full h-full"
+                  />
+                </div>
+                <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                  គ្មានទិន្នន័យ Line
+                </h2>
+              </div>
+            </div>
           </div>
-        </TabsContent>
-
-        <TabsContent value="grid">
-          <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
-            <p>គ្មានទិន្នន័យ</p>
+        )}
+        {tab === "table" && (
+          <div className="mt-4">
+            <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
+              <div className="col-span-1 lg:col-span-3 flex flex-col items-center justify-center py-16">
+                <div className="w-50 h-50 mb-2">
+                  <Image
+                    src="/no-data.svg"
+                    alt="No results found"
+                    width={128}
+                    height={128}
+                    className="w-full h-full"
+                  />
+                </div>
+                <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                  គ្មានទិន្នន័យ Table
+                </h2>
+              </div>
+            </div>
           </div>
-        </TabsContent>
-      </Tabs>
+        )}
+      </div>
     </div>
   );
 }
