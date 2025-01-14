@@ -117,6 +117,7 @@ export default function KeyEconomicIndicatorsSwiper() {
               image={"/statistic.png"}
               date={"១១/ធ្នូ/២០២៤"}
               name={"0.46%"}
+              link="/cpi"
             />
           </SwiperSlide>
           <SwiperSlide

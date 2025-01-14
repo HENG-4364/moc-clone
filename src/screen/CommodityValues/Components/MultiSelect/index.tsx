@@ -9,6 +9,7 @@ interface Option {
 interface MySelectProps {
   options: Option[];
   isMulti: boolean;
+  isClearable?:boolean
   closeMenuOnSelect: boolean;
   hideSelectedOptions: boolean;
   onChange: (selected: Option[]) => void;
@@ -52,12 +53,11 @@ const MySelect: React.FC<MySelectProps> = (props) => {
   );
 
   return (
-    <ReactSelect
+    <ReactSelect 
       {...props}
       options={options}
       onChange={handleChange}
       value={displayValue}
-      isClearable
       isMulti
     />
   );

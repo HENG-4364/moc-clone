@@ -78,7 +78,7 @@ export default function CommodityValuesScreen() {
     setTab(tab);
   };
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 ">
       <Title title={"សន្ទស្សន៍ថ្លៃទំនិញប្រចាំថ្ងៃ"} />
       <div className="grid gap-6 md:grid-cols-[300px,1fr,1fr] mb-8">
         <div>
@@ -173,7 +173,7 @@ export default function CommodityValuesScreen() {
         </div>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 bg-white rounded-md shadow-md">
         {tab === "bar" && (
           <div className="mt-4">
             <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
