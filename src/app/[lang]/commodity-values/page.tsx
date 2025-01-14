@@ -1,9 +1,8 @@
-import React from 'react'
+import CommodityValuesScreen from "@/screen/CommodityValues";
+import React from "react";
 
 const CommodityValuesPage = () => {
-  return (
-    <div>CommodityValuesPage</div>
-  )
-}
+  return <CommodityValuesScreen />;
+};
 
-export default CommodityValuesPage
+export default CommodityValuesPage;

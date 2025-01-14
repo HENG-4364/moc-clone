@@ -108,6 +108,7 @@ export default function KeyEconomicIndicatorsSwiper() {
               image={"/sang.png"}
               date={"១១/ធ្នូ/២០២៤"}
               name={"តម្លៃ"}
+              link="/commodity-values"
             />
           </SwiperSlide>
           <SwiperSlide>
