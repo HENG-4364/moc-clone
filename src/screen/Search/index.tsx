@@ -10,6 +10,7 @@ import { Suspense } from "react";
 import NewsSearchCard from "./Components/NewsSearchCard/NewsSearchCard";
 import DocumentsSearchCard from "./Components/DocumentsSearchCard/DocumentsSearchCard";
 import EmptySearch from "./Components/EmptySearchData/EmptySearchData";
+import { OfficialDocumentPagination } from "../OfficialDocument/components/Pagionation/Pagination";
 
 const newsData = [
   {
@@ -79,7 +80,7 @@ export default function SearchPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
-
+  const page = searchParams.get("page");
   const filteredNews = newsData.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -146,17 +147,29 @@ export default function SearchPage() {
                   {filteredNews.length > 0 ? (
                     <>
                       {filteredNews.map((item) => (
-                        <div key={item.id}>
-                          <NewsSearchCard
-                            imageSrc={item.thumbnail}
-                            title={item.title}
-                            badge={item.badge}
-                            date={item.date}
-                            description={item.description}
-                            onClick={() => router.push(`/news/${item.id}`)}
+                        <>
+                          <div key={item.id}>
+                            <NewsSearchCard
+                              imageSrc={item.thumbnail}
+                              title={item.title}
+                              badge={item.badge}
+                              date={item.date}
+                              description={item.description}
+                              onClick={() => router.push(`/news/${item.id}`)}
+                            />
+                          </div>
+                        </>
+                      ))}
+                      <div className="flex justify-end">
+                        <div className="w-full mt-5">
+                          <OfficialDocumentPagination
+                            currentPage={Number(page)}
+                            total={filteredNews.length} // Dynamically set total based on announcement length
+                            size={10}
+                            limit={5}
                           />
                         </div>
-                      ))}
+                      </div>
                     </>
                   ) : (
                     <>
@@ -183,6 +196,16 @@ export default function SearchPage() {
                             />
                           </div>
                         ))}
+                        <div className="flex justify-end">
+                          <div className="w-full mt-5">
+                            <OfficialDocumentPagination
+                              currentPage={Number(page)}
+                              total={filteredDocuments.length} // Dynamically set total based on announcement length
+                              size={10}
+                              limit={5}
+                            />
+                          </div>
+                        </div>
                       </>
                     ) : (
                       <>

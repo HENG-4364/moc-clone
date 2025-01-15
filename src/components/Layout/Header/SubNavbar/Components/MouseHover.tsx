@@ -71,7 +71,7 @@ const SubMenuHover: React.FC<SubMenuHoverProp> = ({
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className={`absolute mt-1 border rounded-md bg-white flex items-center justify-between transition-opacity duration-300 ${
+          className={`absolute mt-1 shadow-lg rounded-md bg-white flex items-center justify-between transition-opacity duration-300 ${
             isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
         >

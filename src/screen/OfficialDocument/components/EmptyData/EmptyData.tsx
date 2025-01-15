@@ -10,7 +10,7 @@ export default function EmptyData() {
         {/* Error Illustration */}
         <div className="relative w-full h-52 mb-8">
           <Image
-            src="/empty-data.png"
+            src="/no-data.svg"
             alt="404 Error Illustration"
             fill
             className="object-contain"
