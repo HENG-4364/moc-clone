@@ -72,20 +72,9 @@ import { BarChart3, LayoutGrid, LineChart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { parseAsString, useQueryState } from "nuqs";
-const categories = [
-  "MISCELLANEOUS GOODS AND SERVICES",
-  "RESTAURANTS",
-  "EDUCATION",
-  "RECREATION AND CULTURE",
-  "COMMUNICATION",
-  "TRANSPORT",
-  "HEALTH",
-  "FURNISHINGS, HOUSEHOLD MAINTENANCE",
-  "HOUSING, WATER, ELECTRICITY, GAS AND OTHER FUELS",
-  "CLOTHING AND FOOTWEAR",
-  "ALCOHOLIC BEVERAGES, TOBACCO AND NARCOTICS",
-  "FOOD AND NON-ALCOHOLIC BEVERAGES",
-];
+import { data } from "./data";
+import BarChart from "./components/BarChart";
+
 interface Product {
   id: string;
   name: string;
@@ -105,10 +94,24 @@ const selectLimitOptions = [
   },
 ];
 
+const productList: Product[] = [
+  { id: "1", name: "MISCELLANEOUS" },
+  { id: "2", name: "RESTAURANTS" },
+  { id: "3", name: "EDUCATION" },
+  { id: "4", name: "RECREATION AND CULTURE" },
+  { id: "5", name: "COMMUNICATION" },
+  { id: "6", name: "TRANSPORT" },
+  { id: "7", name: "HEALTH" },
+  { id: "8", name: "FURNISHINGS, HOUSEHOLD MAINTENANCE" },
+  { id: "9", name: "HOUSING, WATER, ELECTRICITY, GAS AND OTHER FUELS" },
+  { id: "10", name: "ALCOHOLIC BEVERAGES, TOBACCO AND NARCOTICS" },
+  { id: "11", name: "FOOD AND NON-ALCOHOLIC BEVERAGES" },
+  { id: "12", name: "CLOTHING AND FOOTWEAR" },
+];
 export default function CpiScreen() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
+  const [selectedProducts, setSelectedProducts] = useState<Product[]>(productList);
   const [selectedLimit, setSelectedLimit] = useState<any>({
     label: selectLimitOptions?.find(
       (item) => item?.value === (Number(searchParams.get("limit")) || 5)
@@ -122,20 +125,7 @@ export default function CpiScreen() {
     parseAsString.withDefault("bar")
   );
 
-  const productList: Product[] = [
-    { id: "1", name: "MISCELLANEOUS" },
-    { id: "2", name: "RESTAURANTS" },
-    { id: "3", name: "EDUCATION" },
-    { id: "4", name: "RECREATION AND CULTURE" },
-    { id: "5", name: "COMMUNICATION" },
-    { id: "6", name: "TRANSPORT" },
-    { id: "7", name: "HEALTH" },
-    { id: "8", name: "FURNISHINGS, HOUSEHOLD MAINTENANCE" },
-    { id: "9", name: "HOUSING, WATER, ELECTRICITY, GAS AND OTHER FUELS" },
-    { id: "10", name: "ALCOHOLIC BEVERAGES, TOBACCO AND NARCOTICS" },
-    { id: "11", name: "FOOD AND NON-ALCOHOLIC BEVERAGES" },
-    { id: "12", name: "CLOTHING AND FOOTWEAR" },
-  ];
+
 
   const categoryList: Product[] = [
     { id: "1", name: "៥​ ចុងក្រោយ" },
@@ -165,7 +155,7 @@ export default function CpiScreen() {
     setTab(tab);
   };
   return (
-    <div className="w-full bg-gray-50">
+    <div className="w-full bg-gray-50 pb-20">
       <div className="container mx-auto">
         <Title title={"សន្ទស្សន៍តម្លៃអ្នកប្រើប្រាស់"} />
         <div className="space-y-6 mb-8 bg-white px-6 py-10 rounded-lg shadow-md">
@@ -174,7 +164,7 @@ export default function CpiScreen() {
           </div>
           {/* Time Period Selection */}
           <div className="">
-            <label className="block text-base mb-2">ទំនិញ និងសេវា</label>
+            <label className="block text-base mb-2">បង្ហាញ</label>
             <div className="flex-1">
               <Select
                 onChange={onHandleChangeLimit}
@@ -193,7 +183,7 @@ export default function CpiScreen() {
 
           {/* Category Selection */}
           <div className="">
-            <label className="block text-base mb-2">ទំនិញ និង សេវា</label>
+            <label className="block text-base mb-2">ទំនិញ និងសេវា</label>
             <div className="flex-1">
               <MySelect
                 options={productOptions}
@@ -244,27 +234,39 @@ export default function CpiScreen() {
           </div>
         </div>
 
-        <div className="mt-4 bg-white rounded-md shadow-md">
+        <div className="mt-4  bg-white rounded-md shadow-md p-10 ">
           {tab === "bar" && (
-            <div className="mt-4">
-              <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
-                <div className="col-span-1 lg:col-span-3 flex flex-col items-center justify-center py-16">
-                  <div className="w-50 h-50 mb-2">
-                    <Image
-                      src="/no-data.svg"
-                      alt="No results found"
-                      width={128}
-                      height={128}
-                      className="w-full h-full"
-                    />
-                  </div>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                    គ្មានទិន្នន័យ Bar
-                  </h2>
+            <>
+              {data ? (
+                <div>
+                  <p>
+                    ប្រភព: <b>វិទ្យាស្ថានជាតិស្ថិតិ</b>
+                  </p>
+                  <BarChart data={data} />
                 </div>
-              </div>
-            </div>
+              ) : (
+                <div className="mt-4">
+                  <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
+                    <div className="col-span-1 lg:col-span-3 flex flex-col items-center justify-center py-16">
+                      <div className="w-50 h-50 mb-2">
+                        <Image
+                          src="/no-data.svg"
+                          alt="No results found"
+                          width={128}
+                          height={128}
+                          className="w-full h-full"
+                        />
+                      </div>
+                      <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                        គ្មានទិន្នន័យ Bar
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </>
           )}
+
           {tab === "line" && (
             <div className="mt-4">
               <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
