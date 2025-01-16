@@ -10,6 +10,7 @@ import {
   Inbox,
   XCircle,
   CalendarIcon,
+  CircleX,
 } from "lucide-react";
 import MySelect from "./Components/MultiSelect";
 import { Calendar } from "@/components/ui/calendar";
@@ -23,6 +24,7 @@ import { format } from "date-fns";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Title } from "@/components/Title/Title";
+import { parseAsString, useQueryState } from "nuqs";
 
 interface Product {
   id: string;
@@ -32,12 +34,23 @@ interface Product {
 export default function CommodityValuesScreen() {
   const searchParams = useSearchParams();
   const tabQuery = searchParams.get("q");
-  const [date, setDate] = useState<Date>(new Date("2025-01-01"));
+  // const [date, setDate] = useState<Date>(new Date("2025-01-01"));
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<Product[]>([]);
-  const [tab, setTab] = useState(tabQuery ? tabQuery : "bar");
   const router = useRouter();
+  // const [tab, setTab] = useState(tabQuery ? tabQuery : "bar");
+  const [tab, setTab] = useQueryState(
+    "tabQuery",
+    parseAsString.withDefault("bar")
+  );
 
+  const [date, setDate] = useQueryState(
+    "data",
+    parseAsString.withDefault(new Date().toISOString())
+  );
+  const onHandleClearDatePicker = () => {
+    setDate(null);
+  };
   const productList: Product[] = [
     { id: "1", name: "Product A" },
     { id: "2", name: "Product B" },
@@ -83,39 +96,49 @@ export default function CommodityValuesScreen() {
         <Title title={"សន្ទស្សន៍ថ្លៃទំនិញប្រចាំថ្ងៃ"} />
         <div className="mb-8 bg-white px-4 py-10 rounded-md shadow-md">
           <div className="">
-            <h1 className="text-2xl font-semibold mb-6 ">
-              កំណត់លក្ខខណ្ឌ
-            </h1>
+            <h1 className="text-2xl font-semibold mb-6 ">កំណត់លក្ខខណ្ឌ</h1>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-5  ">
             <div className="col-span-1 lg:col-span-1">
               <label className="block text-base mb-2">ថ្ងៃខែឆ្នាំ</label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className={cn(
-                      "w-full justify-start text-left font-normal",
-                      !date && "text-muted-foreground"
-                    )}
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {date ? (
-                      format(date, "PPP")
-                    ) : (
-                      <span>ជ្រើសរើសកាលបរិច្ឆេទ</span>
-                    )}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    selected={date}
-                    onSelect={(newDate) => newDate && setDate(newDate)}
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
+              <div className="relative mb-6">
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full justify-start text-left font-normal border-gray-300",
+                        !date && "text-muted-foreground"
+                      )}
+                    >
+                      <CalendarIcon className="mr-2 size-4" />
+                      {date ? (
+                        <div className="flex w-full items-center justify-between ">
+                          <span>{format(date, "dd/MM/yyyy")}</span>
+                          <div
+                            className="m-2 text-red-600"
+                            onClick={onHandleClearDatePicker}
+                          >
+                            <CircleX className="size-4" />
+                          </div>
+                        </div>
+                      ) : (
+                        <span className="truncate">ស្វែងរកតាមកាលបរិច្ឆេទ</span>
+                      )}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0 " align="start">
+                    <Calendar
+                      mode="single"
+                      selected={date ? new Date(date) : undefined}
+                      onSelect={(date) =>
+                        setDate(date ? format(date, "yyyy-MM-dd") : null)
+                      }
+                      className="max-w-full "
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
             </div>
 
             <div className="col-span-1 lg:col-span-2">

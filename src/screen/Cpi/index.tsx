@@ -71,6 +71,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { BarChart3, LayoutGrid, LineChart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { parseAsString, useQueryState } from "nuqs";
 const categories = [
   "MISCELLANEOUS GOODS AND SERVICES",
   "RESTAURANTS",
@@ -115,7 +116,12 @@ export default function CpiScreen() {
     value: Number(searchParams.get("limit")) || 5,
   });
   const tabQuery = searchParams.get("q");
-  const [tab, setTab] = useState(tabQuery ? tabQuery : "bar");
+  // const [tab, setTab] = useState(tabQuery ? tabQuery : "bar");
+  const [tab, setTab] = useQueryState(
+    "tabQuery",
+    parseAsString.withDefault("bar")
+  );
+
   const productList: Product[] = [
     { id: "1", name: "MISCELLANEOUS" },
     { id: "2", name: "RESTAURANTS" },
