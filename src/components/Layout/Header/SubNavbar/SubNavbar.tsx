@@ -35,6 +35,24 @@ import { useEffect, useState } from "react";
 import SubMenuHover from "./Components/MouseHover";
 import { useParams, usePathname, useRouter } from "next/navigation";
 
+const business_directory: {
+  title: string;
+  href: string;
+  description: string;
+}[] = [
+  {
+    title: "បញ្ជីនាមករណ៍អាជីវកម្ម​",
+    href: "/business-directory",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
+  },
+  {
+    title: "ប្រភេទអាជីវកម្ម",
+    href: "/business-directory-category",
+    description:
+      "For sighted users to preview content available behind a link.",
+  },
+];
 const business_information: {
   title: string;
   href: string;
@@ -204,6 +222,12 @@ export function SubNavbar() {
                       ព័ត៌មាន
                     </NavigationMenuLink>
                   </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <SubMenuHover
+                    data={business_directory}
+                    menuName="បញ្ជីនាមករណ៍អាជីវកម្ម"
+                  />
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
