@@ -28,9 +28,9 @@ const TypeOfBusinessCard: React.FC<TypeOfBusinessCardProps> = ({
           <Image
             src={thumbnail || "/placeholder.svg"}
             alt={cardTitle}
-            width={80}
-            height={80}
-            className="mx-auto"
+            width={1000}
+            height={1000}
+            className="rounded-full object-cover object-center w-[80px] h-[80px] mx-auto"
           />
         </div>
         <p className="font-bold text-lg text-gray-800 mt-2">{cardTitle}</p>

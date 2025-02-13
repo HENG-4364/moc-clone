@@ -1,22 +1,21 @@
 "use client";
 
 import { Suspense } from "react";
-import { JoinSection } from "./components/join";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import { SearchWithSuggestions } from "./components/search";
-import TypeOfBusiness from "./components/type";
-import CompanyCardPlaceholder from "./components/components/p1";
-import CompanyCard from "./components/components/p2";
-import SwiperCard from "./components/components/swiper";
+import TypeOfBusiness from "./components/TypeOfBusiness/TypeOfBusiness";
+import { SearchWithSuggestions } from "./components/SearchWithSuggestions/SearchWithSuggestions";
+import { JoinSection } from "./components/Banner/BannerSwiper";
+import CompanyCardPlaceholder from "./components/CompanyCard/CompanyCardPlaceholder";
+import CompanyCard from "./components/CompanyCard/CompanyCard";
 const fakeCompanies = [
   {
     khCompanyName: "ក្រុមហ៊ុន អេកូស៊ីស្ទឹម",
     enCompanyName: "Ecosystem Co., Ltd.",
     companyType: "Technology",
-    logoSrc: "/images/eco_logo.png",
+    logoSrc: "/logo.png",
     dict: {
       contact_number: "លេខទំនាក់ទំនង",
       type_of_work: "ប្រភេទការងារ",
@@ -28,7 +27,7 @@ const fakeCompanies = [
     khCompanyName: "ក្រុមហ៊ុន សុខភាព",
     enCompanyName: "HealthCare Inc.",
     companyType: "Healthcare",
-    logoSrc: "/images/healthcare_logo.png",
+    logoSrc: "/logo.png",
     dict: {
       contact_number: "លេខទំនាក់ទំនង",
       type_of_work: "ប្រភេទការងារ",
@@ -40,7 +39,7 @@ const fakeCompanies = [
     khCompanyName: "ក្រុមហ៊ុន ឃ្រីអេធីវ",
     enCompanyName: "Creative Solutions",
     companyType: "Marketing",
-    logoSrc: "/images/creative_logo.png",
+    logoSrc: "/logo.png",
     dict: {
       contact_number: "លេខទំនាក់ទំនង",
       type_of_work: "ប្រភេទការងារ",
@@ -90,8 +89,8 @@ function BusinessDirectoryContent({ dict }: { dict: any }) {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {fakeCompanies.length > 0 ? (
-              fakeCompanies.map((item: any, idx: number) => (
+            {fakeCompanies?.length > 0 ? (
+              fakeCompanies?.map((item: any, idx: number) => (
                 <CompanyCard key={idx} {...item} />
               ))
             ) : (
@@ -118,35 +117,7 @@ function BusinessDirectoryContent({ dict }: { dict: any }) {
         )}
       </div>
 
-      <div className="bg-primary text-white py-12 mt-16">
-        <div className="container">
-          <div className="flex flex-col lg:flex-row items-center">
-            <div className="lg:w-1/2 mb-8 lg:mb-0">
-              <p className="text-blue-200 mb-2">ចូលរួមជាដៃគូរអាជីវកម្ម!</p>
-              <h2 className="text-3xl font-bold mb-4">
-                ទទួលបានអត្ថប្រយោជន៍បន្ថែម និងផ្សព្វផ្សាយអាជីវកម្មរបស់អ្នក។
-              </h2>
-              <div className="space-x-4">
-                <Button
-                  variant="secondary"
-                  onClick={() => router.push("/business-directory/login")}
-                >
-                  ចូលគណនី
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => router.push("/business-directory/sign-up")}
-                >
-                  ចុះឈ្មោះឥឡូវនេះ
-                </Button>
-              </div>
-            </div>
-            <div className="lg:w-1/2">
-              <SwiperCard />
-            </div>
-          </div>
-        </div>
-      </div>
+      <JoinSection dict={dict} />
     </section>
   );
 }

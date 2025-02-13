@@ -27,23 +27,23 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
   const router = useRouter();
 
   return (
-    <Card
-      className="cursor-pointer bg-white shadow-lg rounded-lg p-4 h-full"
+    <div
+      className="cursor-pointer bg-white rounded-lg p-4 h-full shadow-lg"
       onClick={() => router.push(link || "")}
     >
-      <CardContent className="p-0">
-        <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between mb-4">
+      <div className="p-0">
+        <div className="flex items-start justify-between mb-4">
           <div className="w-full xl:w-2/3 mb-4 xl:mb-0">
-            <h5 className="font-bold mb-1 truncate">{khCompanyName}</h5>
-            <h6 className="font-bold truncate">{enCompanyName}</h6>
+            <div className="text-xl font-bold mb-1 truncate">{khCompanyName}</div>
+            <div className="font-bold truncate">{enCompanyName}</div>
           </div>
-          <div className="w-full xl:w-1/3 flex justify-start xl:justify-end">
+          <div className="w-full flex justify-end">
             <Image
               alt={`${enCompanyName} logo`}
               src={logoSrc || "/placeholder.svg"}
-              width={80}
-              height={80}
-              className="rounded-full object-cover object-center"
+              width={1000}
+              height={1000}
+              className="rounded-full object-cover object-center w-[80px] h-[80px]"
             />
           </div>
         </div>
@@ -57,8 +57,8 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
             <p className="font-bold">{companyType}</p>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 

@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Search } from 'lucide-react';
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,11 +26,17 @@ interface SearchResult {
 
 const sampleResults: SearchResult[] = [
   { id: "1", text: "Construction" },
-  { id: "2", text: "General pest control (termite control) and vermin control" },
+  {
+    id: "2",
+    text: "General pest control (termite control) and vermin control",
+  },
   { id: "3", text: "General Pest Control Which Includes Cockroach Control" },
   { id: "4", text: "Gravity Conveyors, Screw Conveyors" },
   { id: "5", text: "2 Screw Conveyor, Roller Conveyor" },
-  { id: "6", text: "6 Rooms (1 Master bed room - air conditioned / 5 room...)" },
+  {
+    id: "6",
+    text: "6 Rooms (1 Master bed room - air conditioned / 5 room...)",
+  },
   { id: "7", text: "Concrete Pipes & Other Concrete Products" },
   { id: "8", text: "Construction plastic and construction materials" },
 ];
