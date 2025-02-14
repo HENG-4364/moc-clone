@@ -5,110 +5,112 @@ import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 
-interface SearchResult {
-  id: string;
-  text: string;
-}
-
-const sampleResults: SearchResult[] = [
-  { id: "1", text: "Construction" },
-  {
-    id: "2",
-    text: "General pest control (termite control) and vermin control",
-  },
-  { id: "3", text: "General Pest Control Which Includes Cockroach Control" },
-  { id: "4", text: "Gravity Conveyors, Screw Conveyors" },
-  { id: "5", text: "2 Screw Conveyor, Roller Conveyor" },
-  {
-    id: "6",
-    text: "6 Rooms (1 Master bed room - air conditioned / 5 room...)",
-  },
-  { id: "7", text: "Concrete Pipes & Other Concrete Products" },
-  { id: "8", text: "Construction plastic and construction materials" },
+// Sample data - replace with actual data
+const searchItems = [
+  "Construction",
+  "General pest control (termite control) and vermin control",
+  "General Pest Control Which Includes Cockroach Control",
+  "Gravity Conveyors, Screw Conveyors",
+  "2 Screw Conveyor, Roller Conveyor",
+  "6 Rooms (1 Master bed room - air conditioned / 5 room...)",
+  "Concrete Pipes & Other Concrete Products",
+  "Construction plastic and construction materials",
 ];
 
 export function SearchWithSuggestions({ dict }: { dict: any }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   const filteredResults = useMemo(() => {
     if (!searchTerm) return [];
-    return sampleResults.filter((result) =>
-      result.text.toLowerCase().includes(searchTerm.toLowerCase())
+    return searchItems.filter((item) =>
+      item.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [searchTerm]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/business-directory/search?q=${searchTerm}`);
+    if (searchTerm.trim()) {
+      router.push(
+        `/business-directory/search?q=${encodeURIComponent(searchTerm)}`
+      );
+      setIsOpen(false);
+    }
   };
 
   return (
     <div className="relative w-full h-[450px] pt-20 flex justify-center text-center bg-[url('/business-directory-search-banner.png')] bg-center bg-no-repeat bg-cover">
       <div className="absolute inset-0 bg-black bg-opacity-20"></div>
       <div className="z-10 text-white p-5">
-        <h1 className="mb-5 text-4xl font-bold">
-          {dict?.search_by_business_name}
-        </h1>
-        <div className="w-full max-w-3xl mx-auto">
-          <form onSubmit={handleSubmit} className="relative">
-            <div className="bg-white bg-opacity-30 p-4 rounded-lg">
-              <div className="bg-white rounded-md flex items-center">
-                <Search className="ml-2 h-5 w-5 text-gray-400" />
-                <Popover open={open} onOpenChange={setOpen}>
-                  <PopoverTrigger asChild>
-                    <Input
-                      type="search"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      onFocus={() => setOpen(true)}
-                      placeholder="ស្វែងរកអាជីវកម្ម"
-                      className="border-0 focus:ring-0"
-                    />
-                  </PopoverTrigger>
-                  <PopoverContent className="p-0" align="start">
-                    <Command>
-                      <CommandInput placeholder="ស្វែងរកអាជីវកម្ម" />
-                      <CommandList>
-                        <CommandEmpty>No results found.</CommandEmpty>
-                        <CommandGroup>
-                          {filteredResults.map((result) => (
-                            <CommandItem
-                              key={result.id}
-                              onSelect={() => {
-                                setSearchTerm(result.text);
-                                setOpen(false);
-                              }}
-                            >
-                              <Search className="mr-2 h-4 w-4" />
-                              {result.text}
-                            </CommandItem>
-                          ))}
-                        </CommandGroup>
-                      </CommandList>
-                    </Command>
-                  </PopoverContent>
-                </Popover>
-                <Button type="submit" className="m-1">
+        <h1 className="mb-5 text-4xl font-bold">ស្វែងរកអាជីវកម្ម</h1>
+        <div className="w-full">
+          <form
+            onSubmit={handleSubmit}
+            className="relative bg-white bg-opacity-30 p-4 rounded-lg"
+          >
+            <div className="relative w-full  lg:w-[799px]">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-gray-500" />
+              </div>
+
+              <Input
+                type="search"
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setIsOpen(true);
+                }}
+                onFocus={() => setIsOpen(true)}
+                className="w-full pl-10 pr-28 text-black"
+                placeholder="Search..."
+              />
+
+              <div className="absolute inset-y-0 right-1 flex items-center ">
+                <Button className="px-6 hover:bg-[#297fb9ea]" type="submit">
                   Search
                 </Button>
               </div>
             </div>
+
+            {isOpen && filteredResults.length > 0 && (
+              <div className="absolute w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg">
+                <ul className="py-2">
+                  {filteredResults.map((item, index) => (
+                    <li
+                      onClick={() => {
+                        setSearchTerm(item);
+                        setIsOpen(false);
+                       
+                      }}
+                      key={index}
+                      className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      <Search className="h-4 w-4 text-gray-500 mr-3 flex-shrink-0" />
+                      <span className="text-sm text-black line-clamp-1">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </form>
         </div>
       </div>

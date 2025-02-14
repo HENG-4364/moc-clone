@@ -72,7 +72,7 @@ export default function TypeOfBusiness({ data, loading }: TypeOfBusinessProps) {
   const lang = params?.lang;
 
   return (
-    <div className="container pb-1 -translate-y-32 relative z-10">
+    <div className="container pb-1 -translate-y-32 relative ">
       {loading || !businessCategories ? (
         <div
           className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 gap-6 `}

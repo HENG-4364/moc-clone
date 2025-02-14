@@ -62,7 +62,7 @@ function BusinessDirectoryContent({ dict }: { dict: any }) {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("q");
   return (
-    <section className="bg-gray-100 pb-16">
+    <section className="bg-gray-10">
       <div className="mb-8">
         <SearchWithSuggestions dict={dict} />
       </div>
