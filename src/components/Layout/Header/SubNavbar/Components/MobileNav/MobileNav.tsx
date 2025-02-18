@@ -21,6 +21,24 @@ import Link from "next/link";
 import { FaFacebookF, FaYoutube, FaXTwitter } from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+const business_directory: {
+  title: string;
+  href: string;
+  description: string;
+}[] = [
+  {
+    title: "បញ្ជីនាមករណ៍អាជីវកម្ម",
+    href: "/business-directory",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
+  },
+  {
+    title: "ប្រភេទអាជីវកម្ម",
+    href: "/business-directory",
+    description:
+      "For sighted users to preview content available behind a link.",
+  },
+];
 const business_information: {
   title: string;
   href: string;
@@ -200,6 +218,27 @@ export default function MobileNav() {
           >
             <Link href="/news">ព័ត៌មាន</Link>
           </div>
+          <AccordionItem value="item-4" className="border-none">
+            <AccordionTrigger
+              className="py-2 text-lg hover:font-semibold hover:bg-accent hover:px-2 rounded-md transition-all duration-300 cursor-pointer"
+              style={{ textDecoration: "none" }}
+            >
+              <div>បញ្ជីនាមករណ៍អាជីវកម្ម</div>
+            </AccordionTrigger>
+            <AccordionContent>
+              {business_directory.map((item: any, idx: number) => (
+                <nav key={idx} className="flex flex-col space-y-2">
+                  <Link
+                    href={item?.href}
+                    className="px-4 py-2 text-base hover:font-semibold hover:bg-accent hover:px-5 rounded-md transition-all duration-300 cursor-pointer"
+                    onClick={handleLinkClick}
+                  >
+                    {item?.title}
+                  </Link>
+                </nav>
+              ))}
+            </AccordionContent>
+          </AccordionItem>
         </Accordion>
 
         <div className="flex justify-center">

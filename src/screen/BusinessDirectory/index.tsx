@@ -20,7 +20,7 @@ const fakeCompanies = [
       contact_number: "លេខទំនាក់ទំនង",
       type_of_work: "ប្រភេទការងារ",
     },
-    link: "/companies/ecosystem",
+    link: "/business-directory/1",
     phoneNumber: "012 345 678",
   },
   {
@@ -32,7 +32,7 @@ const fakeCompanies = [
       contact_number: "លេខទំនាក់ទំនង",
       type_of_work: "ប្រភេទការងារ",
     },
-    link: "/companies/healthcare",
+    link: "/business-directory/1",
     phoneNumber: "098 765 432",
   },
   {
@@ -44,7 +44,7 @@ const fakeCompanies = [
       contact_number: "លេខទំនាក់ទំនង",
       type_of_work: "ប្រភេទការងារ",
     },
-    link: "/companies/creative",
+    link: "/business-directory/1",
     phoneNumber: "011 223 344",
   },
 ];
