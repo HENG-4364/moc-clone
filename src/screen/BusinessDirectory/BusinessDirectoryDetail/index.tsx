@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SwiperCard from "../components/Banner/components/swiper";
+import { JoinSection } from "../components/Banner/BannerSwiper";
 
 export default function BusinessDirectoryDetailScreen() {
   return (
@@ -14,51 +16,47 @@ export default function BusinessDirectoryDetailScreen() {
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Map Placeholder */}
-            <div className="mb-6 h-[300px] overflow-hidden rounded-lg bg-gray-200">
-              <Image
-                src=""
-                alt="Map"
-                width={300}
-                height={300}
-                className="h-full w-full "
-              />
-              <div className="flex justify-end gap-2 p-4">
-                <Button variant="secondary" size="sm">
-                  Street view
-                </Button>
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="bg-yellow-500 hover:bg-yellow-600"
-                >
-                  Get directions
-                </Button>
+            <div className="border border-b-0 rounded-t-lg">
+              <div className=" h-[100%] bg-gray-200">
+                <Image
+                  src="/ministry-of-commerece-banner.jpg"
+                  alt="Map"
+                  width={1000}
+                  height={300}
+                  className="h-full w-full "
+                />
+              </div>
+              <div className="hidden xl:block bg-[#2980B9] p-1 text-center text-white text-xs md:text-sm">
+                Do you own this business? If yes,{" "}
+                <Link href="#" className="underline hover:text-slate-300">
+                  click here
+                </Link>{" "}
+                to claim it now and unlock the page's full features!
               </div>
             </div>
-
             {/* Business Info */}
-            <Card>
-              <CardContent className="p-4">
+            <div className="rounded-b-lg border border-t-0">
+              <div className="p-4">
                 <div className="flex items-start gap-6">
-                  <div className="h-20 w-20 md:h-32 md:w-32 flex-shrink-0 overflow-hidden rounded-lg border bg-gray-50 p-4">
+                  <div className="mb-3 h-20 w-20 md:h-32 md:w-32 flex-shrink-0 overflow-hidden  bg-gray-50 ">
                     <Image
-                      src="/placeholder.svg?height=100&width=100"
+                      src="/icons/icon-512x512.png?height=100&width=100"
                       alt="Business placeholder"
                       width={100}
                       height={100}
                       className="h-full w-full object-contain"
                     />
                   </div>
-                  <div className="flex flex-1 items-start justify-between">
+                  <div className="flex flex-1 items-start justify-between py-2">
                     <div>
                       <div className="flex gap-2">
                         <h1 className="md:text-2xl font-bold">
-                          1 Premiere Land Marketing Company
+                          Ministry Of Commerce
                         </h1>
                       </div>
                       <div className="flex gap-2">
                         <h1 className="md:text-2xl font-bold">
-                          សដថថដសថហថហសដថថដសហថហ
+                          ក្រសួងពាណិជ្ជកម្ម
                         </h1>
                       </div>
                       <div className="mt-1 inline-block rounded-full bg-gray-100 px-3 py-1 text-xs md:text-sm text-gray-600">
@@ -75,54 +73,58 @@ export default function BusinessDirectoryDetailScreen() {
                     </div>
                   </div>
                 </div>
-
+                <hr className=" border-gray-200" />
                 <div className="space-y-4 mt-6">
-                  <div className="flex gap-3">
-                    <MapPin className="h-5 w-5 text-gray-400" />
+                  <div className="flex gap-3 text-sm">
                     <div>
-                      <p className="font-medium">Address</p>
+                      <MapPin className="!h-5 !w-5 text-gray-400" />
+                    </div>
+                    <div>
+                      <p className="font-semibold">Address</p>
                       <p className="text-gray-600">
                         2/F A.B. Sandoval Building, Oranbo Drive corner Shaw
                         Boulevard, Pasig City 1600 Metro Manila
                       </p>
                     </div>
                   </div>
-                  <div className="flex gap-3">
-                    <Phone className="h-5 w-5 text-gray-400" />
+                  <div className="flex gap-3 text-sm">
                     <div>
-                      <p className="font-medium">Landline</p>
+                      <Phone className="!h-5 !w-5 text-gray-400" />
+                    </div>
+                    <div>
+                      <p className="font-semibold">Landline</p>
                       <p className="text-gray-600">+63 (2) 8 635 4011</p>
                       <p className="text-gray-600">+63 (2) 7 901 4459</p>
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
             <Card className="mt-6">
               <CardContent className="p-4">
                 <Tabs defaultValue="business" className="">
                   <TabsList className="w-full justify-start border-b">
                     <TabsTrigger
                       value="business"
-                      className="rounded-none border-b-2 border-transparent data-[state=active]:border-yellow-500"
+                      className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#2980B9]"
                     >
                       Business Info
                     </TabsTrigger>
                     <TabsTrigger
                       value="reviews"
-                      className="rounded-none border-b-2 border-transparent data-[state=active]:border-yellow-500"
+                      className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#2980B9]"
                     >
                       Reviews
                     </TabsTrigger>
                     <TabsTrigger
                       value="photos"
-                      className="rounded-none border-b-2 border-transparent data-[state=active]:border-yellow-500"
+                      className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#2980B9]"
                     >
                       Photos
                     </TabsTrigger>
                     <TabsTrigger
                       value="videos"
-                      className="rounded-none border-b-2 border-transparent data-[state=active]:border-yellow-500"
+                      className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#2980B9]"
                     >
                       Videos
                     </TabsTrigger>
@@ -131,8 +133,8 @@ export default function BusinessDirectoryDetailScreen() {
                     <div className="space-y-6">
                       <div>
                         <h3 className="mb-3 flex items-center gap-2 font-semibold">
-                          <span className="rounded-full bg-yellow-100 p-1">
-                            <Star className="h-4 w-4 text-yellow-500" />
+                          <span className="rounded-full bg-[#dff2ff] p-1">
+                            <Star className="h-4 w-4 text-[#2980B9]" />
                           </span>
                           Categories
                         </h3>
@@ -161,11 +163,28 @@ export default function BusinessDirectoryDetailScreen() {
 
           {/* Sidebar */}
           <div className="space-y-6">
+            <div className="relative w-full overflow-hidden rounded-md bg-white">
+              {/* Map Image */}
+              <div className="relative h-[300px] w-full">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7817.816496194703!2d104.864177!3d11.558435!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951d9a9f773d7%3A0x9fb3b11a42d79a1d!2sDepartment%20of%20Business%20Registration%20of%20MOC!5e0!3m2!1sen!2skh!4v1739867659251!5m2!1sen!2skh"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    border: 0,
+                  }}
+                ></iframe>
+              </div>
+            </div>
+
             <Card>
               <CardContent className="p-6">
                 <h3 className="mb-4 flex items-center gap-2 font-semibold">
-                  <span className="rounded-full bg-yellow-100 p-1">
-                    <Star className="h-4 w-4 text-yellow-500" />
+                  <span className="rounded-full bg-[#dff2ff] p-1">
+                    <Star className="h-4 w-4 text-[#2980B9]" />
                   </span>
                   People Also Looked for
                 </h3>
@@ -176,7 +195,7 @@ export default function BusinessDirectoryDetailScreen() {
                       href="#"
                       className="flex gap-4 hover:bg-gray-50"
                     >
-                      <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-200">
+                      <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
                         <Image
                           src="/placeholder.svg?height=64&width=64"
                           alt="Business"
@@ -197,11 +216,11 @@ export default function BusinessDirectoryDetailScreen() {
               </CardContent>
             </Card>
 
-            <Card>
+            {/* <Card>
               <CardContent className="p-6">
                 <h3 className="mb-4 flex items-center gap-2 font-semibold">
-                  <span className="rounded-full bg-yellow-100 p-1">
-                    <Star className="h-4 w-4 text-yellow-500" />
+                  <span className="rounded-full bg-[#dff2ff] p-1">
+                    <Star className="h-4 w-4 text-[#2980B9]" />
                   </span>
                   Nearby Businesses
                 </h3>
@@ -212,7 +231,7 @@ export default function BusinessDirectoryDetailScreen() {
                       href="#"
                       className="flex gap-4 hover:bg-gray-50"
                     >
-                      <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-200">
+                      <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
                         <Image
                           src="/placeholder.svg?height=64&width=64"
                           alt="Business"
@@ -229,10 +248,11 @@ export default function BusinessDirectoryDetailScreen() {
                   ))}
                 </div>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </div>
+      <JoinSection />
     </div>
   );
 }

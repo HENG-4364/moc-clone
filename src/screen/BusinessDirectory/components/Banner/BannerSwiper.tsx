@@ -8,7 +8,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import SwiperCard from "./components/swiper";
 
-export function JoinSection({ dict }: { dict: any }) {
+export function JoinSection() {
   const router = useRouter();
 
   return (

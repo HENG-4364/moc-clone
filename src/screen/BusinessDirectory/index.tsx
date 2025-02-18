@@ -117,7 +117,7 @@ function BusinessDirectoryContent({ dict }: { dict: any }) {
         )}
       </div>
 
-      <JoinSection dict={dict} />
+      <JoinSection/>
     </section>
   );
 }
