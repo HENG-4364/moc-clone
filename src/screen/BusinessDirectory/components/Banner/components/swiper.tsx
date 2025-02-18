@@ -29,8 +29,8 @@ export default function SwiperCard() {
         }}
         slidesPerView={4}
         modules={[Autoplay, Pagination]}
-        className="mySwiper"
-        style={{ paddingBottom: "50px" }}
+        className="mySwiper !pb-10 "
+       
       >
         <SwiperSlide className="cursor-pointer">
           <ImageCard
