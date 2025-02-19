@@ -12,10 +12,8 @@ export default function manifest(): MetadataRoute.Manifest {
     display: 'standalone',
     background_color: '#2980B9',
     theme_color: '#2980B9',
-    id: 'moc-attendance',
     orientation: 'portrait',
     scope: '/',
-    prefer_related_applications: false,
     icons: [
       {
         src: '/web-app-manifest-192x192.png',
