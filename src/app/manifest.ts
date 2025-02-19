@@ -4,7 +4,6 @@ import { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Ministry of Commerce',
-    lang: 'km',
     description: siteConfig.description,
     display_override: ['standalone'],
     short_name: 'MOC',
