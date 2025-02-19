@@ -34,16 +34,16 @@ export const metadata = {
     capable: true,
     statusBarStyle: "#2980B9",
   },
-  // openGraph: {
-  //   title: siteConfig.name,
-  //   description: siteConfig.description,
-  //   url: siteConfig.url,
-  //   images: [
-  //     {
-  //       url: siteConfig.thumbnailImage,
-  //     },
-  //   ],
-  // },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    images: [
+      {
+        url: siteConfig.thumbnailImage,
+      },
+    ],
+  },
   icons: "/favicon.ico",
   manifest: "/manifest.json",
 };
@@ -58,9 +58,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="apple-mobile-web-app-title" content="Attendance" />
-      </head>
       <body className={`${hanuman.className} ${moul.className}`}>
         {children}
         <PWAInstallPrompt />
