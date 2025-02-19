@@ -32,19 +32,19 @@ export default function RootLayout({
     </html>
   );
 }
-// export const metadata: Metadata = {
-//   title: "Ministry of Commerce | moc.gov.kh",
-//   description:
-//     "សូមស្វាគមន៍មកកាន់ និងសូមអរគុណចំពោះការចូលមកកាន់គេហទំព័ររបស់យើងខ្ញុំ។",
-//   openGraph: {
-//     images: {
-//       url: "/banner.jpg",
-//     },
-//     type: "website",
-//     title: "Ministry of Commerce | moc.gov.kh",
-//     description:
-//       " សូមស្វាគមន៍មកកាន់ក្រសួងពាណិជ្ជកម្មនិងសូមអរគុណចំពោះការចូលមកកាន់គេហទំព័ររបស់យើងខ្ញុំ។ ខ្ញុំមានសេចក្តីរីករាយសូមជម្រាបជូនថាបេសកកម្មរបស់ក្រសួងគឺផ្តល់ជូនសាធារណៈជននូវរាល់សេវាកម្មទាក់ទងនឹងពាណិជ្ជកម្មទីផ្សារថ្មីៗ និងបន្តអនុវត្តគោលនយោបាយពាណិជ្ជកម្មរបស់កម្ពុជាដើម្បីផលប្រយោជន៍ដ៏ធំធេងនៃការអភិវឌ្ឍ",
-//     siteName: "moc.gov.kh",
-//     url: "moc.gov.kh",
-//   },
-// };
+export const metadata: Metadata = {
+  title: "Ministry of Commerce | moc.gov.kh",
+  description:
+    "សូមស្វាគមន៍មកកាន់ និងសូមអរគុណចំពោះការចូលមកកាន់គេហទំព័ររបស់យើងខ្ញុំ។",
+  openGraph: {
+    images: {
+      url: "/banner.jpg",
+    },
+    type: "website",
+    title: "Ministry of Commerce | moc.gov.kh",
+    description:
+      " សូមស្វាគមន៍មកកាន់ក្រសួងពាណិជ្ជកម្មនិងសូមអរគុណចំពោះការចូលមកកាន់គេហទំព័ររបស់យើងខ្ញុំ។ ខ្ញុំមានសេចក្តីរីករាយសូមជម្រាបជូនថាបេសកកម្មរបស់ក្រសួងគឺផ្តល់ជូនសាធារណៈជននូវរាល់សេវាកម្មទាក់ទងនឹងពាណិជ្ជកម្មទីផ្សារថ្មីៗ និងបន្តអនុវត្តគោលនយោបាយពាណិជ្ជកម្មរបស់កម្ពុជាដើម្បីផលប្រយោជន៍ដ៏ធំធេងនៃការអភិវឌ្ឍ",
+    siteName: "moc.gov.kh",
+    url: "moc.gov.kh",
+  },
+};
