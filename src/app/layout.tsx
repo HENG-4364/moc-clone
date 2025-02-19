@@ -47,6 +47,7 @@ export const metadata = {
   icons: "/favicon.ico",
   manifest: "/manifest.json",
 };
+
 export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,

@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
+
 import "./globals.css";
 import { Layout } from "@/components/Layout";
 import { Hanuman, Moul } from "next/font/google";
 import { PWAInstallPrompt } from "@/components/pwa-install-prompt";
-import { siteConfig } from "@/common/config";
 
 const hanuman = Hanuman({
   subsets: ["latin"],
@@ -17,27 +16,7 @@ const moul = Moul({
   display: "swap",
   weight: "400",
 });
-export const metadata = {
-  title: siteConfig.name,
-  description: siteConfig.description,
-  authors: [{ name: "ក្រសួងពាណិជ្ជកម្ម", url: "https://moc.gov.kh" }],
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "#2980B9",
-  },
-  openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    images: [
-      {
-        url: siteConfig.thumbnailImage,
-      },
-    ],
-  },
-  icons: "/favicon.ico",
-  manifest: "/manifest.json",
-};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -54,19 +33,4 @@ export default function RootLayout({
     </html>
   );
 }
-// export const metadata: Metadata = {
-//   title: "Ministry of Commerce | moc.gov.kh",
-//   description:
-//     "សូមស្វាគមន៍មកកាន់ និងសូមអរគុណចំពោះការចូលមកកាន់គេហទំព័ររបស់យើងខ្ញុំ។",
-//   openGraph: {
-//     images: {
-//       url: "/banner.jpg",
-//     },
-//     type: "website",
-//     title: "Ministry of Commerce | moc.gov.kh",
-//     description:
-//       " សូមស្វាគមន៍មកកាន់ក្រសួងពាណិជ្ជកម្មនិងសូមអរគុណចំពោះការចូលមកកាន់គេហទំព័ររបស់យើងខ្ញុំ។ ខ្ញុំមានសេចក្តីរីករាយសូមជម្រាបជូនថាបេសកកម្មរបស់ក្រសួងគឺផ្តល់ជូនសាធារណៈជននូវរាល់សេវាកម្មទាក់ទងនឹងពាណិជ្ជកម្មទីផ្សារថ្មីៗ និងបន្តអនុវត្តគោលនយោបាយពាណិជ្ជកម្មរបស់កម្ពុជាដើម្បីផលប្រយោជន៍ដ៏ធំធេងនៃការអភិវឌ្ឍ",
-//     siteName: "moc.gov.kh",
-//     url: "moc.gov.kh",
-//   },
-// };
+
