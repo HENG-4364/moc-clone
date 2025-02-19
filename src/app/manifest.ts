@@ -1,12 +1,13 @@
+import { siteConfig } from "@/common/config";
 import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Ministry of Commerce',
     lang: 'km',
+    description: siteConfig.description,
     display_override: ['standalone'],
     short_name: 'MOC',
-    description: 'Check your attendance with seamless QR code scanning',
     start_url: '/',
     display: 'standalone',
     background_color: '#2980B9',
