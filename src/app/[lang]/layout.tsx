@@ -3,6 +3,7 @@ import "./globals.css";
 import { Layout } from "@/components/Layout";
 import { Hanuman, Moul } from "next/font/google";
 import { PWAInstallPrompt } from "@/components/pwa-install-prompt";
+import { siteConfig } from "@/common/config";
 
 const hanuman = Hanuman({
   subsets: ["latin"],
@@ -16,6 +17,27 @@ const moul = Moul({
   display: "swap",
   weight: "400",
 });
+export const metadata = {
+  title: siteConfig.name,
+  description: siteConfig.description,
+  authors: [{ name: "ក្រសួងពាណិជ្ជកម្ម", url: "https://moc.gov.kh" }],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "#2980B9",
+  },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    images: [
+      {
+        url: siteConfig.thumbnailImage,
+      },
+    ],
+  },
+  icons: "/favicon.ico",
+  manifest: "/manifest.json",
+};
 export default function RootLayout({
   children,
 }: Readonly<{
